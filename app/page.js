@@ -1,24 +1,18 @@
-import HorizontalScroll from "./components/HorizontalScroll";
+import HeroVideo from "./components/homeSection/Hero";
+import StorySection from "./components/homeSection/StorySection";
+import HorizontalScroll from "./components/homeSection/HorizontalScroll";
 import LenisProvider from "./components/Lenis";
+import ClubIntro from "./components/homeSection/ClubIntro";
+import MantisLocation from "./components/location/MantisLocation"
 export default function Home() {
   return (
     <>
       <LenisProvider>
-        {[1, 2, 3].map((e, id) => (
-          <div key={id}>
-            <div style={{ minHeight: "100vh" }}>
-              {e}. mantis{e}
-            </div>
-          </div>
-        ))}
+         <HeroVideo/>  
+       <ClubIntro/>
+        <StorySection/>  
         <HorizontalScroll />
-        {[1, 2, 3].map((e, id) => (
-          <div key={id}>
-            <div style={{ minHeight: "100vh" }}>
-              {e}. mantis{e}
-            </div>
-          </div>
-        ))}
+         <MantisLocation/>
       </LenisProvider>
     </>
   );

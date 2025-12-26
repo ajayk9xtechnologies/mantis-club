@@ -1,12 +1,12 @@
- 'use client'
-// import Forms from "@/app/components/forms/FormField";
+import FormField from "./../forms/FormField";
 
 export default function Footer() {
   return (
     <footer className="bg-[#0b0b0b] text-white px-6 md:px-16 py-20">
-      {/* <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-16">
 
-         <div className="lg:col-span-2">
+        {/* LEFT */}
+        <div className="lg:col-span-2">
            
 
           <p className="text-gray-400 mt-6 max-w-xl">
@@ -14,10 +14,10 @@ export default function Footer() {
             new projects starting from February 2022.
           </p>
 
-           <Forms/>
+           <FormField/>
         </div>
 
-      
+        {/* RIGHT */}
         <div className="space-y-10 text-gray-400">
           <div>
             <h4 className="text-white font-medium mb-2">Contact Details</h4>
@@ -40,7 +40,7 @@ export default function Footer() {
             <p className="mt-1 text-sm">5:30:33 PM</p>
           </div>
         </div>
-      </div> */}
+      </div>
      </footer>
   );
 }

@@ -1,8 +1,8 @@
 "use client";
-export default function Form() {
+export default function FormField() {
   return (
     <>
-      {/* <form className="mt-12 space-y-10 max-w-2xl">
+      <form className="mt-12 space-y-10 max-w-2xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <input
             type="text"
@@ -28,7 +28,7 @@ export default function Form() {
         >
           Send Message
         </button>
-      </form> */}
+      </form>
     </>
   );
 }
