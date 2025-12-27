@@ -61,12 +61,18 @@ export default function MenuSection({ isOpen, onClose }) {
       <div className="px-10 mt-24 grid grid-cols-1 lg:grid-cols-2 gap-32">
         <div>
           <p className="text-sm mb-6 opacity-70">Explore</p>
-          <ul className="space-y-6">
+          <ul className="space-y-6 bold">
+             <li className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide cursor-pointer hover:opacity-60 transition">
+              Home
+            </li>
             <li className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide cursor-pointer hover:opacity-60 transition">
               Contact
             </li>
             <li className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide cursor-pointer hover:opacity-60 transition">
               Gallery 
+            </li>
+             <li className="text-5xl md:text-6xl lg:text-7xl font-light tracking-wide cursor-pointer hover:opacity-60 transition">
+              Book Now 
             </li>
           </ul>
         </div>

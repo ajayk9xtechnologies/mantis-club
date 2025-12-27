@@ -9,7 +9,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="fixed w-full z-50">
+      <header className="fixed w-full z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
         <div className="w-full px-1 md:px-5 xl:px-12">
           <div className="relative h-20 flex items-center justify-between">
             <Link href="/" className="mt-4">
