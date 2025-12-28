@@ -58,7 +58,7 @@ export default function MantisLocation() {
               Find {" "}
               <span className="text-color-one">Mantis</span>
             </h2>
-          <p className="text-xl md:text-2xl text-white/70 max-w-2xl mx-auto">
+          <p className="paragraph_three mx-auto">
             Emirates Financial Towers, DIFC
           </p>
         </div>
@@ -104,7 +104,7 @@ export default function MantisLocation() {
               <h3 className="text-3xl md:text-4xl font-light tracking-wide mb-6 text-[#f8db98]">
                 DIFC, Dubai
               </h3>
-              <div className="space-y-3 text-lg text-white/80 leading-relaxed">
+              <div className="space-y-1 paragraph_three leading-relaxed">
                 <p>Emirates Financial Towers</p>
                 <p>Podium Level</p>
                 <p>Dubai International Financial Centre (DIFC)</p>

@@ -51,7 +51,7 @@ const PartyDarkSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-black py-20 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
+    <section ref={sectionRef} className="relative w-full py-20 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden">
       
       {/* Full Section Background Image */}
       <div 
@@ -87,7 +87,7 @@ const PartyDarkSection = () => {
               </defs>
               <text 
                 className="text-[13px] font-bold uppercase" 
-                fill="#D4AF37" 
+                fill="#f8db98" 
                 style={{ letterSpacing: '6px' }}
               >
                 <textPath href="#circlePathParty" startOffset="0%">
@@ -108,12 +108,12 @@ const PartyDarkSection = () => {
 
         {/* Section Title */}
         <div className="text-center mb-16 md:mb-24">
-          <div className="w-16 h-1 bg-[#D4AF37] mx-auto mb-6"></div>
+          <div className="w-16 h-1 bg-[#f8db98] mx-auto mb-6"></div>
         
           <h2 className="font-semibold text-lg text-white">
-            PARTY AFTER <span className="text-[#D4AF37]">DARK</span>
+            PARTY AFTER <span className="text-[#f8db98]">DARK</span>
           </h2>
-          <p className="text-[#D4AF37] text-xl md:text-2xl">
+          <p className="text-[#f8db98] paragraph_three">
             DIFC Night Club
           </p>
         </div>
@@ -131,14 +131,14 @@ const PartyDarkSection = () => {
                 
                 {/* Section Title */}
                 <div className="lg:col-span-3">
-                  <h3 className="text-white text-2xl md:text-4xl lg:text-5xl font-bold tracking-tight">
+                  <h3 className="text-white font-bold tracking-tight">
                     {section.title}
                   </h3>
                 </div>
 
                 {/* Description */}
                 <div className="lg:col-span-7">
-                  <p className="text-gray-400 text-base md:text-lg lg:text-xl leading-relaxed">
+                  <p className="text-gray-400 paragraph_three leading-relaxed">
                     {section.description}
                   </p>
                 </div>
@@ -148,9 +148,9 @@ const PartyDarkSection = () => {
                   <button
                     className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
                       hoveredIndex === index
-                        ? 'bg-[#D4AF37] scale-110'
+                        ? 'bg-[#f8db98] scale-110'
                         : index === 0
-                        ? 'bg-[#D4AF37]'
+                        ? 'bg-[#f8db98]'
                         : 'bg-white'
                     }`}
                   >
@@ -169,10 +169,10 @@ const PartyDarkSection = () => {
 
         {/* Bottom CTA */}
         <div className="mt-16 md:mt-24 text-center">
-          <p className="text-gray-400 text-lg md:text-xl mb-6">
+          <p className="text-gray-400 paragraph_two mb-6">
             The result is a space where interaction feels easy, nights feel fluid, and the experience is driven as much by the people as by the music and cocktails.
           </p>
-          <p className="text-[#D4AF37] text-xl md:text-2xl font-bold">
+          <p className="text-[#f8db98] paragraph_two font-bold">
             Best club in Dubai for weekend party
           </p>
         </div>

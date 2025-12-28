@@ -25,7 +25,9 @@ const HeroVideo = () => {
     const t = setTimeout(() => setVideoLoaded(true), 600);
     return () => clearTimeout(t);
   }, []);
-
+const toYoutube=()=>{
+  return window.open("https://www.youtube.com/@mantisdubai6438", "_blank");
+}
   // GSAP animations
 useEffect(() => {
   const ctx = gsap.context(() => {
@@ -117,7 +119,7 @@ useEffect(() => {
 
   return (
     <>
-      <section
+      <section onClick={toYoutube}
         id="mantis"
         ref={heroRef}
         className="relative h-screen w-full overflow-hidden bg-black"

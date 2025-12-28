@@ -93,7 +93,7 @@ export default function HorizontalScroll() {
               <span className="text-color-one">Gallery</span>
             </h2>
      
-          <p className="mx-auto">
+          <p className="mx-auto paragraph_three">
             Explore our collection of moments. Click any image to view in full size.
           </p>
         </div>
@@ -143,7 +143,7 @@ export default function HorizontalScroll() {
 
         {/* More Gallery Button */}
         <div className="text-center">
-          <Button text="More Gallery"/>
+          <Button text="More Gallery" link="gallery"/>
         </div>
       </div>
 

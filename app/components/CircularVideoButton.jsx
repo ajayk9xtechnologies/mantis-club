@@ -14,11 +14,11 @@ const CircularVideoButton = ({ youtubeUrl = "https://www.youtube.com/watch?v=48_
       ease: "none"
     });
   }, []);
+   
 
   return (
     <div className="absolute z-50" style={{opacity:0.4}}>
       <div className="relative w-[180px] h-[180px] flex items-center justify-center">
-        {/* Rotating Text */}
         <svg 
           ref={svgRef} 
           width="180" 
@@ -44,7 +44,7 @@ const CircularVideoButton = ({ youtubeUrl = "https://www.youtube.com/watch?v=48_
         </svg>
 
         
-          <Play className="w-8 h-8 text-black fill-white ml-1" />
+          <Play className="w-8 h-8 text-white fill-black ml-1" />
          
       </div>
     </div>

@@ -1,26 +1,48 @@
 "use client";
 import Image from "next/image";
 import logo from "../../assets/images/Mantis_logo-removebg-preview-300x150.png";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Lenis from "lenis";
 import MenuSection from "./MenuSection";
 export default function Header() {
+  const lenisRef = useRef(null);
+
   const [toggle, setToggle] = useState(false);
+  useEffect(() => {
+    const lenis = new Lenis({
+      smooth: true,
+      lerp: 0.1,
+    });
+
+    lenisRef.current = lenis;
+
+    const raf = (time) => {
+      lenis.raf(time);
+    };
+
+    requestAnimationFrame(raf);
+
+    return () => {
+      lenis.stop();
+      lenis.destroy();
+      lenisRef.current = null;
+    };
+  }, []);
 
   return (
     <>
-      <header className="fixed w-full z-50 backdrop-blur-md bg-black/30 border-b border-white/10">
-        <div className="w-full px-1 md:px-5 xl:px-12">
+      <header className="fixed w-full z-50 backdrop-blur-xs bg-black/10">
+        <div className="w-full p-4">
           <div className="relative h-20 flex items-center justify-between">
-            <Link href="/" className="mt-4">
+            <a href="/" className="cusror">
               <Image src={logo} alt="logo" width={180} />
-            </Link>
+            </a>
             <div className="w-10" />
-            {/* Center logo */}
-            <div className="absolute left-1/2 -translate-x-1/2 mt-10"></div>
+             <div className="absolute left-1/2 -translate-x-1/2 mt-10"></div>
 
             {/* Hamburger */}
-            <button onClick={() => setToggle(true)}>
+            <button className="cursor" onClick={() => setToggle(true)}>
               <svg
                 width="40"
                 height="40"

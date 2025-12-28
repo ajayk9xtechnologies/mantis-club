@@ -46,7 +46,9 @@ body {
 .lenis.lenis-stopped {
   overflow: hidden;
 }
-
+.cursor{
+  cursor: pointer !important;
+}
 h1,
 h2,
 h3 {
@@ -133,7 +135,7 @@ p {
 
 .animated-button:hover {
   box-shadow: 0 0 0 5px var(--template-color-one);
-  color: var(--template-color-one);
+  color: #000;
 }
 
 .animated-button:active {
@@ -148,3 +150,4 @@ p {
 
 /* video container  */
  
+

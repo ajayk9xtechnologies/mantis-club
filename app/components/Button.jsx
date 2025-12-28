@@ -1,13 +1,13 @@
- 'use client';
-export default function Button({text}) {
+ 
+import Link from "next/link";
+
+export default function Button({ text, link }) {
   return (
     <>
-    <button className="animated-button">
-  <span>{text}</span>
-  <span></span>
-</button>
-
+      <Link href={link} className="animated-button">
+        <span>{text}</span>
+        <span></span>
+      </Link>
     </>
-  )
+  );
 }
- 
