@@ -77,7 +77,7 @@ export default function MenuSection({ isOpen, onClose, lenisRef }) {
           <ul className="space-y-6 font-bold">
             {["Home", "Contact", "Gallery", "Book Now"].map((item, i) => (
               <li key={item} onClick={item === "Home" ? handleHomeClick : onClose}
-                className="text-5xl md:text-6xl lg:text-8xl tracking-wide cursor-pointer hover:opacity-60 transition" >
+                className="text-5xl md:text-6xl tracking-wide cursor-pointer hover:opacity-60 transition" >
                 {item}
               </li>
             ))}
