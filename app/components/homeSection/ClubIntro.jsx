@@ -52,22 +52,7 @@ const ClubIntro = () => {
           transform: translate(0, 0);
         }
       `}</style>
-{/* Infinite Marquee Heading */}
-<div className="relative overflow-hidden bg-black py-10 border-y border-[#D4AF37]/20 mb-16">
-  <div className="animate-marquee flex items-center gap-12">
-    {/* We repeat the content twice to ensure it loops perfectly */}
-    {[1, 2].map((i) => (
-      <h1 key={i} className="text-white text-5xl md:text-7xl lg:text-8xl font-bold leading-tight flex items-center gap-12">
-        <span>
-          Nightclub in Dubai DIFC - <span className="text-[#D4AF37]">Mantis Dubai</span>
-        </span>
-        <span className="text-outline">
-          MANTIS • MANTIS • MANTIS
-        </span>
-      </h1>
-    ))}
-  </div>
-</div>
+ 
       <div className="max-w-7xl mx-auto">
         
         {/* Main Heading */}
