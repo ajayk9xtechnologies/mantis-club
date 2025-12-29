@@ -86,22 +86,18 @@ export default function HorizontalScroll() {
     return () => {
       clearTimeout(timeoutId);
 
-      // Kill all ScrollTriggers first, before React removes DOM nodes
-      ScrollTrigger.getAll().forEach((trigger) => {
+       ScrollTrigger.getAll().forEach((trigger) => {
         try {
-          trigger.kill(true); // true = immediately kill without animation
+          trigger.kill(true);  
         } catch (e) {
-          // Silently handle if trigger is already killed
-        }
+         }
       });
 
-      // Then revert the context
-      if (ctx) {
+       if (ctx) {
         try {
           ctx.revert();
         } catch (e) {
-          // Silently handle cleanup errors
-        }
+         }
       }
     };
   }, []);
