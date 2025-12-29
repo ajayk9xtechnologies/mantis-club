@@ -35,9 +35,9 @@ export default function Header() {
       <header className="fixed w-full z-50 backdrop-blur-xs bg-black/10">
         <div className="w-full p-4">
           <div className="relative h-20 flex items-center justify-between">
-            <a href="/" className="cusror">
+            <Link href="/gallery" className="cusror">
               <Image src={logo} alt="logo" width={180} />
-            </a>
+            </Link>
             <div className="w-10" />
              <div className="absolute left-1/2 -translate-x-1/2 mt-10"></div>
 

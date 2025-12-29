@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import MantisImg from "../../assets/images/DSC01348-scaled.jpg";
+import SectionTitle from "../SectionTitle";
 const storyContent = [
   {
     title: "High-Energy Nights at",
@@ -51,7 +52,7 @@ export default function MantisScrollSection() {
       "
       style={{
         backgroundImage: `url(${MantisImg.src})`,
-        backgroundAttachment: "fixed", // 🔥 KEY LINE
+        backgroundAttachment: "fixed",  
       }}
     >
       {/* DARK OVERLAY */}
@@ -76,12 +77,8 @@ export default function MantisScrollSection() {
         <div className="lg:col-span-7 space-y-8">
           {storyContent.map((item, i) => (
             <div key={i}>
-              <h3 className="font-semibold text-lg">
-                {item.title}{" "}
-                <span className="text-color-one">{item.subTitle}</span>
-              </h3>
-              <p className="mt-2 opacity-90 paragraph_three">{item.text}</p>
-            </div>
+              <SectionTitle title={item.title} subtitle={item.subTitle} description={item.text} align="start" />
+             </div>
           ))}
         </div>
 

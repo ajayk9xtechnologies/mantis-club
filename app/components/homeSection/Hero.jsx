@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import CircularVideoButton from "../CircularVideoButton";
 import React from "react";
+import thumbnailUrl from "../../assets/images/DSC01376-scaled.jpg";
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroVideo = () => {
@@ -18,8 +19,7 @@ const HeroVideo = () => {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   const videoId = "48_q9A9cH1s";
-  const thumbnailUrl = `https://img.youtube.com/vi/48_q9A9cH1s/maxresdefault.jpg`;
-
+ 
   // Lazy-load YouTube iframes
   useEffect(() => {
     const t = setTimeout(() => setVideoLoaded(true), 600);
@@ -96,13 +96,11 @@ useEffect(() => {
 
       // ✅ MOBILE ONLY
       "(max-width: 767px)": () => {
-        // Kill curtains completely
-        gsap.set([curtainLeftRef.current, curtainRightRef.current], {
+         gsap.set([curtainLeftRef.current, curtainRightRef.current], {
           display: "none",
         });
 
-        // Reset transforms so nothing jumps
-        gsap.set(
+         gsap.set(
           [textGroupRef.current, htmlTextRef.current, videoWrapperRef.current],
           {
             clearProps: "all",
@@ -124,8 +122,7 @@ useEffect(() => {
         ref={heroRef}
         className="relative h-screen w-full overflow-hidden bg-black"
       >
-        {/* Background Video Wrapper */}
-        <div ref={videoWrapperRef} className="absolute inset-0 overflow-hidden">
+         <div ref={videoWrapperRef} className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0">
             {!videoLoaded && (
               <Image
@@ -155,18 +152,15 @@ useEffect(() => {
             )}
           </div>
 
-          {/* Dark gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/60 pointer-events-none" />
+           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/60 pointer-events-none" />
         </div>
 
-        {/* Semantic HTML Text (SEO-friendly) */}
-        <div
+         <div
           ref={htmlTextRef}
           className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center pointer-events-none z-10"
         ></div>
 
-        {/* SVG Masked Text + Outline (visual effect) */}
-        <div className="absolute inset-0 flex items-center justify-center px-4 pointer-events-none z-20">
+         <div className="absolute inset-0 flex items-center justify-center px-4 pointer-events-none z-20">
            <CircularVideoButton/>
           <svg
             ref={textGroupRef}

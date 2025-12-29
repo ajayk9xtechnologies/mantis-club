@@ -23,6 +23,7 @@ const Popup = dynamic(
 );
 
 import 'leaflet/dist/leaflet.css'; // Safe to import here
+import SectionTitle from '../SectionTitle';
 
 // Fix Leaflet default markers (client-only)
 const fixLeafletIcons = () => {
@@ -53,15 +54,8 @@ export default function MantisLocation() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 relative z-10">
-        <div className="text-center mb-16">
-          <h2 className="text-foreground leading-tight mb-6">
-              Find {" "}
-              <span className="text-color-one">Mantis</span>
-            </h2>
-          <p className="paragraph_three mx-auto">
-            Emirates Financial Towers, DIFC
-          </p>
-        </div>
+ 
+       <SectionTitle title="Find" subtitle="Mantis" description="Emirates Financial Towers, DIFC" />
 
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Interactive Map */}
