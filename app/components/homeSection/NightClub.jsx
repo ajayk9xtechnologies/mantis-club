@@ -4,7 +4,7 @@ import { ArrowUpRight, Play } from "lucide-react";
 import React from "react";
 import SectionTitle from "../SectionTitle";
 
-import img13 from "../../assets/images/gallery/gallery-10.jpeg";
+
 // import img14 from "../../assets/images/gallery/gallery-10.jpeg";
 // import img11 from "../../assets/images/gallery/gallery-11.jpeg";
 // import img5 from "../../assets/images/gallery/gallery-5.jpeg";
@@ -58,15 +58,16 @@ const PartyDarkSection = () => {
       ref={sectionRef}
       className="relative w-full py-20 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden bg-black"
     >
-      {/* ✅ FIXED BACKGROUND IMAGE (NO HOVER) */}
-      <div
-        className="absolute inset-0 pointer-events-none opacity-20"
-        style={{
-          backgroundImage: `url(${img13.src})`,
-          backgroundSize: "cover",
-          backgroundPosition: "center",
-        }}
-      />
+      {/* BACKGROUND VIDEO */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-20"
+        autoPlay
+        loop
+        muted
+        playsInline
+      >
+        <source src="/videos/club.mp4" type="video/mp4" />
+      </video>
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Circular Video Button */}
