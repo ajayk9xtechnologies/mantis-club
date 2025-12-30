@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
-
+import SafeLink from "../SafeLink";
 import MantisImageOne from "./../../assets/images/DSC01432-scaled.jpg";
 import MantisImageTwo from "./../../assets/images/DSC01389-2048x1365.jpg";
 import MantisImageThree from "./../../assets/images/DSC01362-1-1024x683.jpg";
@@ -86,18 +86,16 @@ export default function HorizontalScroll() {
     return () => {
       clearTimeout(timeoutId);
 
-       ScrollTrigger.getAll().forEach((trigger) => {
+      ScrollTrigger.getAll().forEach((trigger) => {
         try {
-          trigger.kill(true);  
-        } catch (e) {
-         }
+          trigger.kill(true);
+        } catch (e) {}
       });
 
-       if (ctx) {
+      if (ctx) {
         try {
           ctx.revert();
-        } catch (e) {
-         }
+        } catch (e) {}
       }
     };
   }, []);
@@ -139,12 +137,12 @@ export default function HorizontalScroll() {
           ))}
         </div>
         <div className="text-center">
-          <Link href="/gallery" className="animated-button">
+          <SafeLink href="/gallery" className="animated-button">
             <div className="animated-inner">
               <span>More Gallery</span>
               <span aria-hidden="true"></span>
             </div>
-          </Link>
+          </SafeLink>
         </div>
       </div>
 
@@ -180,7 +178,6 @@ export default function HorizontalScroll() {
                 <p className="text-gray-800 text-lg md:text-xl font-medium italic">
                   Mantis Dubai #{selectedImage.index + 1}
                 </p>
-                
               </div>
             </div>
           </div>

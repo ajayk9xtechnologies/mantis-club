@@ -26,7 +26,7 @@ import img17 from "../../app/assets/images/gallery/gallery-17.jpeg";
 import img18 from "../../app/assets/images/gallery/gallery-18.jpeg";
 import img19 from "../../app/assets/images/gallery/gallery-19.jpeg";
 import img20 from "../../app/assets/images/gallery/gallery-20.jpeg";
-import LenisProvider from "../components/Lenis";
+
 import SectionTitle from "../components/SectionTitle";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -92,9 +92,9 @@ export default function HorizontalScroll() {
   }, []);
 
   return (
-   
-    <LenisProvider>
- <section className="relative bg-black py-20 px-4 overflow-hidden">
+
+
+    <section className="relative bg-black py-20 px-4 overflow-hidden">
       {/* ===== BACKGROUND IMAGE ===== */}
       <div className="absolute inset-0">
         <Image
@@ -145,7 +145,7 @@ export default function HorizontalScroll() {
             </div>
           ))}
         </div>
- 
+
       </div>
 
       {/* MODAL */}
@@ -201,6 +201,5 @@ export default function HorizontalScroll() {
         }
       `}</style>
     </section>
-    </LenisProvider>
   );
 }

@@ -1,88 +1,53 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
 import Image from "next/image";
-import Link from "next/link";
-import logo from "../../assets/images/Mantis_logo-removebg-preview-300x150.png";
+ import logo from "../../assets/images/Mantis_logo-removebg-preview-300x150.png";
+import SafeLink from "../SafeLink";
 
-export default function MenuSection({ isOpen, onClose, lenisRef }) {
-  const menuRef = useRef(null);
-  const itemsRef = useRef([]);
-
-  useEffect(() => {
-    if (!menuRef.current) return;
-
-    const ctx = gsap.context(() => {
-      if (isOpen) {
-        gsap.set(menuRef.current, { y: "-100%" });
-
-        gsap
-          .timeline()
-          .to(menuRef.current, {
-            y: "0%",
-            duration: 0.8,
-            ease: "power3.out",
-          })
-          .from(
-            itemsRef.current,
-            {
-              y: 60,
-              opacity: 0,
-              stagger: 0.12,
-              duration: 0.6,
-              ease: "power3.out",
-            },
-            "-=0.4"
-          );
-      } else {
-        gsap.to(menuRef.current, {
-          y: "-100%",
-          duration: 0.6,
-          ease: "power3.in",
-        });
-      }
-    }, menuRef);
-
-    return () => ctx.revert();
-  }, [isOpen]);
-
-  const handleHomeClick = (e) => {
-    e.preventDefault();
-    onClose();
-
-    if (lenisRef?.current) {
-      lenisRef.current.scrollTo(0, { immediate: true });
-    }
-  };
-
+export default function MenuSection({ isOpen, onClose }) {
   return (
     <section
-      ref={menuRef}
-      className="fixed inset-0 z-50 bg-[#000] text-[#f8db98]"
+      className={`fixed inset-0 z-50 bg-black text-[#f8db98]
+        transition-transform duration-500 ease-out
+        ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
       style={{ pointerEvents: isOpen ? "auto" : "none" }}
     >
-       <div className="cusror flex justify-between items-center px-10">
-        <Link href="/" onClick={handleHomeClick} className="mt-4 bg-black rounded-xl">
-          <Image src={logo} alt="logo" width={180} />
-        </Link>
-
-        <button onClick={onClose} className="cusror w-8 h-8 border border-[#d6d2c4] flex items-center justify-center">
+      {/* HEADER */}
+      <div className="flex justify-between items-center px-10 py-6">
+        <SafeLink href="/" onNavigate={onClose}>
+          <Image src={logo} alt="Mantis logo" width={180} />
+        </SafeLink>
+        <button
+          onClick={onClose}
+          className="w-10 h-10 border border-[#d6d2c4] flex items-center justify-center text-xl"
+        >
           ✕
         </button>
       </div>
-       <div className="px-10 mt-10 grid grid-cols-1 lg:grid-cols-2 gap-32">
-        <div>
-          <p className="paragraph_two mb-6 opacity-70">Explore</p>
-          <ul className="space-y-6 font-bold">
-            {["Home", "Contact", "Gallery", "Book Now"].map((item, i) => (
-              <li key={item} onClick={item === "Home" ? handleHomeClick : onClose}
-                className="text-5xl md:text-6xl tracking-wide cursor-pointer hover:opacity-60 transition" >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </div>
+
+      {/* MENU */}
+      <div className="px-10 mt-20">
+        <p className="uppercase text-sm tracking-widest opacity-60 mb-8">
+          Explore
+        </p>
+
+        <ul className="space-y-6 font-bold">
+          {[
+            { label: "Home", href: "/" },
+            { label: "Contact", href: "/contact" },
+            { label: "Gallery", href: "/gallery" },
+            { label: "Book Now", href: "/contact" },
+          ].map((item) => (
+            <li
+              key={item.label}
+              className="text-5xl md:text-6xl tracking-wide hover:opacity-60 transition"
+            >
+              <SafeLink href={item.href} onNavigate={onClose}>
+                {item.label}
+              </SafeLink>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

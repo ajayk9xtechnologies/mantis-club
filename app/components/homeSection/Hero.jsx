@@ -1,11 +1,13 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
+import { usePathname } from "next/navigation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import CircularVideoButton from "../CircularVideoButton";
 import React from "react";
 import thumbnailUrl from "../../assets/images/DSC01376-scaled.jpg";
+
 gsap.registerPlugin(ScrollTrigger);
 
 const HeroVideo = () => {
@@ -17,112 +19,120 @@ const HeroVideo = () => {
   const curtainLeftRef = useRef(null);
   const curtainRightRef = useRef(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const pathname = usePathname();
 
   const videoId = "48_q9A9cH1s";
- 
-  // Lazy-load YouTube iframes
+
   useEffect(() => {
     const t = setTimeout(() => setVideoLoaded(true), 600);
     return () => clearTimeout(t);
   }, []);
-const toYoutube=()=>{
-  return window.open("https://www.youtube.com/@mantisdubai6438", "_blank");
-}
+
+  const toYoutube = () => {
+    return window.open("https://www.youtube.com/@mantisdubai6438", "_blank");
+  };
+
+  // Kill ScrollTriggers on pathname change (BEFORE navigation completes)
+  useEffect(() => {
+    return () => {
+      // This runs when pathname changes, BEFORE component unmounts
+      ScrollTrigger.getAll().forEach((st) => {
+        st.kill(true);
+      });
+      gsap.killTweensOf("*");
+    };
+  }, [pathname]);
+
   // GSAP animations
-useEffect(() => {
-  const ctx = gsap.context(() => {
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      ScrollTrigger.matchMedia({
+        "(min-width: 768px)": () => {
+          gsap.fromTo(
+            [textGroupRef.current, htmlTextRef.current],
+            { opacity: 0, scale: 1.2 },
+            { opacity: 1, scale: 1, duration: 1.4, ease: "power3.out" }
+          );
 
-    ScrollTrigger.matchMedia({
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: heroRef.current,
+              start: "top top",
+              end: "+=100%",
+              scrub: true,
+              pin: true,
+              anticipatePin: 1,
+            },
+          });
 
-      // ✅ DESKTOP ONLY
-      "(min-width: 768px)": () => {
+          tl.fromTo(
+            [textGroupRef.current, htmlTextRef.current],
+            { scale: 1 },
+            { scale: 4, ease: "none" },
+            0
+          );
 
-        // Initial fade-in
-        gsap.fromTo(
-          [textGroupRef.current, htmlTextRef.current],
-          { opacity: 0, scale: 1.2 },
-          { opacity: 1, scale: 1, duration: 1.4, ease: "power3.out" }
-        );
+          tl.to(
+            [textGroupRef.current, htmlTextRef.current],
+            { opacity: 0, ease: "none" },
+            0.4
+          );
+          tl.to(outlineRef.current, { opacity: 0, ease: "none" }, 0.4);
 
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: heroRef.current,
-            start: "top top",
-            end: "+=100%",
-            scrub: true,
-            pin: true,
-            anticipatePin: 1,
-          },
-        });
+          tl.fromTo(
+            videoWrapperRef.current,
+            { scale: 1 },
+            { scale: 1.15, ease: "none" },
+            0
+          );
 
-        // Text zoom
-        tl.fromTo(
-          [textGroupRef.current, htmlTextRef.current],
-          { scale: 1 },
-          { scale: 4, ease: "none" },
-          0
-        );
+          tl.fromTo(
+            curtainLeftRef.current,
+            { x: "-100%" },
+            { x: "-30%", ease: "power2.in", duration: 0.3 },
+            0.7
+          );
+          tl.fromTo(
+            curtainRightRef.current,
+            { x: "100%" },
+            { x: "30%", ease: "power2.in", duration: 0.3 },
+            0.7
+          );
+        },
 
-        // Fade text
-        tl.to(
-          [textGroupRef.current, htmlTextRef.current],
-          { opacity: 0, ease: "none" },
-          0.4
-        );
-        tl.to(outlineRef.current, { opacity: 0, ease: "none" }, 0.4);
+        "(max-width: 767px)": () => {
+          gsap.set([curtainLeftRef.current, curtainRightRef.current], {
+            display: "none",
+          });
 
-        // Background video zoom
-        tl.fromTo(
-          videoWrapperRef.current,
-          { scale: 1 },
-          { scale: 1.15, ease: "none" },
-          0
-        );
+          gsap.set(
+            [
+              textGroupRef.current,
+              htmlTextRef.current,
+              videoWrapperRef.current,
+            ],
+            {
+              clearProps: "all",
+            }
+          );
+        },
+      });
+    }, heroRef);
 
-        // 🎭 Curtains (DESKTOP ONLY)
-        tl.fromTo(
-          curtainLeftRef.current,
-          { x: "-100%" },
-          { x: "-30%", ease: "power2.in", duration: 0.3 },
-          0.7
-        );
-        tl.fromTo(
-          curtainRightRef.current,
-          { x: "100%" },
-          { x: "30%", ease: "power2.in", duration: 0.3 },
-          0.7
-        );
-      },
-
-      // ✅ MOBILE ONLY
-      "(max-width: 767px)": () => {
-         gsap.set([curtainLeftRef.current, curtainRightRef.current], {
-          display: "none",
-        });
-
-         gsap.set(
-          [textGroupRef.current, htmlTextRef.current, videoWrapperRef.current],
-          {
-            clearProps: "all",
-          }
-        );
-      },
-    });
-
-  }, heroRef);
-
-  return () => ctx.revert();
-}, []);
-
+    return () => {
+      ctx.revert();
+    };
+  }, []);
 
   return (
     <>
-      <section onClick={toYoutube}
+      <section
+        onClick={toYoutube}
         id="mantis"
         ref={heroRef}
         className="relative h-screen w-full overflow-hidden bg-black"
       >
-         <div ref={videoWrapperRef} className="absolute inset-0 overflow-hidden">
+        <div ref={videoWrapperRef} className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0">
             {!videoLoaded && (
               <Image
@@ -139,10 +149,10 @@ useEffect(() => {
               <iframe
                 className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
                 style={{
-                  width: '100vw',
-                  height: '100vh',
-                  minWidth: '177.77vh',
-                  minHeight: '56.25vw'
+                  width: "100vw",
+                  height: "100vh",
+                  minWidth: "177.77vh",
+                  minHeight: "56.25vw",
                 }}
                 src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=${videoId}`}
                 allow="autoplay"
@@ -152,16 +162,16 @@ useEffect(() => {
             )}
           </div>
 
-           <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/60 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/60 pointer-events-none" />
         </div>
 
-         <div
+        <div
           ref={htmlTextRef}
           className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center pointer-events-none z-10"
         ></div>
 
-         <div className="absolute inset-0 flex items-center justify-center px-4 pointer-events-none z-20">
-           <CircularVideoButton/>
+        <div className="absolute inset-0 flex items-center justify-center px-4 pointer-events-none z-20">
+          <CircularVideoButton />
           <svg
             ref={textGroupRef}
             className="h-auto w-full max-w-[90vw] sm:max-w-[85vw] md:max-w-[80vw] lg:max-w-[75vw]"
@@ -290,7 +300,6 @@ useEffect(() => {
           </svg>
         </div>
 
-        {/* Curtain Panels */}
         <div
           ref={curtainLeftRef}
           className="absolute inset-y-0 left-0 w-1/2 bg-black z-30 origin-left"
