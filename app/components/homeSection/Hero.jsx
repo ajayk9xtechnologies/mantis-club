@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import CircularVideoButton from "../CircularVideoButton";
 import React from "react";
-import thumbnailUrl from "../../assets/images/DSC01376-scaled.jpg";
+import thumbnailUrl from "../../assets/images/DSC01348-scaled.jpg";
 
 gsap.registerPlugin(ScrollTrigger);
 
