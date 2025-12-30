@@ -28,14 +28,19 @@ body {
   background: var(--background);
   color: var(--foreground);
   overflow-x: hidden;
+  font-family: 'DMSans', sans-serif;
 }
 @font-face {
-  font-family: "ClubParty";
-  src: url("./assets/font/club-party/ClubParty.otf") format("truetype");
+  font-family: "SwanleyFree";
+  src: url("./assets/font/SwanleyFree.ttf") format("truetype");
 }
 @font-face {
-  font-family: "butter";
-  src: url("./assets/font/club-party/home-candy.regular.ttf") format("truetype");
+  font-family: "DMSans";
+  src: url("./assets/font/DMSans.ttf") format("truetype");
+}
+@font-face {
+  font-family: "kaushan";
+  src: url("./assets/font/KaushanScript-Regular.ttf") format("truetype");
 }
 .lenis.lenis-smooth {
   scroll-behavior: auto;
@@ -49,33 +54,34 @@ body {
 .cursor{
   cursor: pointer !important;
 }
-h1,
+h1
+{
+  font-family: "SwanleyFree";
+}
 h2,
 h3 {
-  font-family: "ClubParty";
+  font-family: 'kaushan', cursive !important;
 }
 h1 {
-  font-size: clamp(40px, 5vw, 106px);
+  font-size: clamp(40px, 5vw, 90px);
 }
 
 h2 {
-  font-size: clamp(32px, 4vw, 70px);
+  font-size: clamp(32px, 4vw, 50px);
 }
 
 h3 {
-  font-size: clamp(24px, 3vw, 48px);
+  font-size: clamp(24px, 3vw, 45px);
 }
-p {
-  font-family: "butter", sans-serif;
-}
+ 
 .paragraph_one {
   font-size: clamp(24px, 3vw, 48px);
 }
 .paragraph_two {
-  font-size: clamp(24px, 3vw, 38px);
+  font-size: clamp(24px, 3vw, 34px);
 }
 .paragraph_three {
-  font-size: clamp(18px, 3vw, 28px);
+  font-size: clamp(16px, 3vw, 26px);
 }
 
 .text-color-one {

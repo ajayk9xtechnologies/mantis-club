@@ -2,13 +2,13 @@
 import Image from "next/image";
 import google from "../../assets/images/google.webp"
 import logo from "../../assets/images/Mantis_logo-removebg-preview-300x150.png";
+import SafeLink from "../SafeLink";
 import {
   Instagram,
   Facebook,
   Music2,
   MessageCircle
 } from "lucide-react";
-import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -26,14 +26,14 @@ export default function Footer() {
           />
 
           <h3 className="font-bold leading-tight">
-            LET’S PARTY <br /> TOGETHER
+            LET S PARTY <br /> TOGETHER
           </h3>
-          <a
+          <SafeLink
             href="#contact"
             className="inline-flex items-center gap-3 bg-[#f8db98] text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
           >
-            LET’S TALK
-          </a>
+            LET S TALK
+          </SafeLink>
         </div>
 
         {/* CENTER : NAV */}
@@ -41,10 +41,11 @@ export default function Footer() {
           <h4 className="font-semibold text-white tracking-wide">
             NAVIGATION
           </h4>
-          <Link href="#home" className="block hover:text-[#f8db98]">Home</Link>
-          <Link href="/gallery" className="block hover:text-[#f8db98]">Gallery</Link>
-          <Link href="/contact" className="block hover:text-[#f8db98]">Contact</Link>
+          <SafeLink href="#mantis" className="block hover:text-[#f8db98]">Home</SafeLink>
+          <SafeLink href="/gallery" className="block hover:text-[#f8db98]">Gallery</SafeLink>
+          <SafeLink href="/contact" className="block hover:text-[#f8db98]">Contact</SafeLink>
         </div>
+        
         {/* RIGHT : SOCIAL + GOOGLE */}
         <div className="space-y-6">
           <h4 className="font-semibold text-white tracking-wide">
@@ -52,15 +53,15 @@ export default function Footer() {
           </h4>
 
           <div className="flex items-center gap-4">
-            <a className="social"><Instagram /></a>
-            <a className="social"><Facebook /></a>
-            <a className="social"><Music2 /></a>
-            <a className="social"><MessageCircle /></a>
+            <a href="https://www.instagram.com/mantisdubai" target="_blank" rel="noopener noreferrer" className="social"><Instagram /></a>
+            <a href="https://www.facebook.com/MantisDubai/" target="_blank" rel="noopener noreferrer" className="social"><Facebook /></a>
+            <a href="https://www.tiktok.com/en/" target="_blank" rel="noopener noreferrer" className="social"><Music2 /></a>
+            <a href="tel:+971565607007" target="_blank" rel="noopener noreferrer" className="social"><MessageCircle /></a>
           </div>
 
           {/* GOOGLE REVIEWS */}
-          <a
-            href="https://www.google.com/search?q=mantis+dxb"
+          
+           <a href="https://www.google.com/search?sca_esv=76c4bff7d1a872fc&sxsrf=AE3TifMKVLhG3m5sCM-GuaGLtxFuX5Fo4A:1767086986263&q=mantis+club+dubai&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E3Rzhu45nDQN2NbgXW8aGinxA7JyMXtbtksdYStt2YN_aJvm_ZsD-B67j5HGHo6flDEijJOcQzImc0JbZOAW2CntoRqp&sa=X&sqi=2&ved=2ahUKEwiL1-mAgOWRAxWnlP0HHQlUAUIQrrQLegQINRAA&biw=1916&bih=898&dpr=1"
             target="_blank"
             className="inline-block mt-4"
           >

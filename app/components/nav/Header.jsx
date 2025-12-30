@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <>
       <header className="fixed w-full z-50 backdrop-blur-xs bg-black/10">
-        <div className="w-full p-4">
+        <div className="w-full px-4 py-2">
           <div className="relative h-20 flex items-center justify-between">
             <SafeLink
               href="#mantis"

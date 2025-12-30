@@ -24,7 +24,7 @@ const HeroVideo = () => {
   const videoId = "48_q9A9cH1s";
 
   useEffect(() => {
-    const t = setTimeout(() => setVideoLoaded(true), 600);
+    const t = setTimeout(() => setVideoLoaded(true), 500);
     return () => clearTimeout(t);
   }, []);
 
@@ -127,7 +127,6 @@ const HeroVideo = () => {
   return (
     <>
       <section
-        onClick={toYoutube}
         id="mantis"
         ref={heroRef}
         className="relative h-screen w-full overflow-hidden bg-black"
@@ -170,11 +169,11 @@ const HeroVideo = () => {
           className="absolute inset-0 flex flex-col items-center justify-center px-4 text-center pointer-events-none z-10"
         ></div>
 
-        <div className="absolute inset-0 flex items-center justify-center px-4 pointer-events-none z-20">
-          <CircularVideoButton />
-          <svg
+        <div className="absolute inset-0 flex items-center justify-center px-4 z-20" onClick={toYoutube} >
+           <CircularVideoButton />
+          <svg 
             ref={textGroupRef}
-            className="h-auto w-full max-w-[90vw] sm:max-w-[85vw] md:max-w-[80vw] lg:max-w-[75vw]"
+            className="h-auto pointer-events-none w-full max-w-[90vw] sm:max-w-[85vw] md:max-w-[80vw] lg:max-w-[75vw]"
             viewBox="0 0 1200 600"
             preserveAspectRatio="xMidYMid meet"
             aria-hidden="true"
@@ -302,11 +301,11 @@ const HeroVideo = () => {
 
         <div
           ref={curtainLeftRef}
-          className="absolute inset-y-0 left-0 w-1/2 bg-black z-30 origin-left"
+          className="absolute inset-y-0 left-0 w-1/2 bg-black z-30 origin-left pointer-events-none"
         />
         <div
           ref={curtainRightRef}
-          className="absolute inset-y-0 right-0 w-1/2 bg-black z-30 origin-right"
+          className="absolute inset-y-0 right-0 w-1/2 bg-black z-30 origin-right pointer-events-none"
         />
       </section>
     </>

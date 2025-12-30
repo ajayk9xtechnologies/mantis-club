@@ -1,7 +1,10 @@
-'use client'
+"use client";
 import { useEffect, useRef } from "react";
 import React from "react";
-
+import clubone from "../../assets/images/clubone.jpg";
+import clubThree from "../../assets/images/DSC01584-2048x1365.jpg";
+import clubtwo from "../../assets/images/DSC01579-3-scaled.jpg";
+import Image from "next/image";
 const ClubIntro = () => {
   const sectionRef = useRef(null);
   const image1Ref = useRef(null);
@@ -11,18 +14,18 @@ const ClubIntro = () => {
   useEffect(() => {
     const observerOptions = {
       threshold: 0.2,
-      rootMargin: '0px 0px -100px 0px'
+      rootMargin: "0px 0px -100px 0px",
     };
 
     const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
+      entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          entry.target.classList.add("animate-in");
         }
       });
     }, observerOptions);
 
-    [image1Ref, image2Ref, image3Ref].forEach(ref => {
+    [image1Ref, image2Ref, image3Ref].forEach((ref) => {
       if (ref.current) observer.observe(ref.current);
     });
 
@@ -30,7 +33,10 @@ const ClubIntro = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative w-full bg-black py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-20">
+    <section
+      ref={sectionRef}
+      className="relative w-full bg-black py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-20"
+    >
       <style jsx>{`
         .fade-up {
           opacity: 0;
@@ -52,32 +58,44 @@ const ClubIntro = () => {
           transform: translate(0, 0);
         }
       `}</style>
- 
+
       <div className="max-w-7xl mx-auto">
-        
         {/* Main Heading */}
-        <div className="mb-16 md:mb-20 text-center lg:text-left">
-          <h1 className="text-white leading-tight mb-6">
-            Nightclub in Dubai DIFC - <span className="text-[#D4AF37]">Mantis Dubai</span>
+        <div className="mb-10 md:mb-20 text-center lg:text-left">
+          <h1 className="text-white leading-tight lg:mb-6">
+            <span className="bg-gradient-to-r from-[#6b5a2e] via-[#D4AF37] to-[#f8db98] bg-clip-text text-transparent">
+              Nightclub in Dubai
+            </span>{" "}
+            DIFC - Mantis Dubai
           </h1>
-          <h2 className="leading-tight">
-            Where Music, Mood, and Momentum Meet — Nightclub in DIFC Dubai
-          </h2>
+          
         </div>
 
         {/* First Block - Text Left, Image Right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20 md:mb-28 items-center">
           <div className="space-y-6">
+            <h2 className="leading-tight text-color-one">
+            Where Music, Mood, and Momentum Meet 
+          </h2>
             <p className="text-gray-300 paragraph_three leading-relaxed">
-              Mantis Dubai is a Best nightclub in DIFC where the music flows with intention, where the vibe comes from the music, and where the energy grows with the music, rather than creating chaos or trying to overcompensate with alcohol or other substances.
+              Mantis Dubai is a Best nightclub in DIFC where the music flows
+              with intention, where the vibe comes from the music, and where the
+              energy grows with the music, rather than creating chaos or trying
+              to overcompensate with alcohol or other substances.
             </p>
             <p className="text-gray-300 paragraph_three leading-relaxed">
-              We create an atmosphere rather than just filling the room with noise. Each beat at Premium nightclub DIFC is arranged in a way that will maintain the energy of the night without killing the conversation.
+              We create an atmosphere rather than just filling the room with
+              noise. Each beat at Premium nightclub DIFC is arranged in a way
+              that will maintain the energy of the night without killing the
+              conversation.
             </p>
           </div>
-          <div ref={image1Ref} className="hidden lg:block  fade-up relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1566417713940-fe7c737a9ef2?w=1200"
+          <div
+            ref={image1Ref}
+            className="hidden lg:block  fade-up relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
+          >
+            <Image
+              src={clubone}
               alt="Mantis Dubai Club Interior"
               className="w-full h-full object-cover"
             />
@@ -86,49 +104,61 @@ const ClubIntro = () => {
 
         {/* Second Block - Image Left, Text Right */}
         <div className="hidden lg:block grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20 md:mb-28 items-center">
-          <div ref={image2Ref} className="fade-left relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200"
+          <div
+            ref={image2Ref}
+            className="fade-left relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
+          >
+            <Image
+              src={clubThree}
               alt="Mantis Dubai Dance Floor"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="space-y-6 mt-5">
+            
             <p className="text-gray-300 paragraph_three leading-relaxed text-center ">
-              Whether you are just getting off work and grabbing a drink or working up, Mantis is the place where music-orientated nights, eye-catching/elegant cocktails, and an alert/engaged audience come together in a smooth, confident, and unapologetically social way.
+              Whether you are just getting off work and grabbing a drink or
+              working up, Mantis is the place where music-orientated nights,
+              eye-catching/elegant cocktails, and an alert/engaged audience come
+              together in a smooth, confident, and unapologetically social way.
             </p>
           </div>
         </div>
 
-        {/* Second Heading */}
-        <div className="mb-16 md:mb-20 text-center lg:text-left">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white leading-tight">
-            Top Dance Club in DIFC Dubai — <span className="text-[#D4AF37]">Mantis Dubai</span>
-          </h2>
-        </div>
+ 
 
         {/* Third Block - Text Left, Image Right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-6">
+            <h2 className="leading-tight text-color-one">
+            Top Dance Club in DIFC Dubai —Mantis Dubai
+          </h2>
             <p className="text-gray-300 leading-relaxed paragraph_three">
-              Located in the middle of Dubai s DIFC, Mantis is one of the best clubs to party in DIFC, hosting a variety of music-focused events with a fun crowd and a vibe driven more by rhythm than excess.
+              Located in the middle of Dubai s DIFC, Mantis is one of the best
+              clubs to party in DIFC, hosting a variety of music-focused events
+              with a fun crowd and a vibe driven more by rhythm than excess.
             </p>
             <p className="text-gray-300 leading-relaxed paragraph_three">
-              Through its signature cocktails, beautiful ambiance, and thoughtfully designed atmosphere, Mantis creates an intentional social scene on nights.
+              Through its signature cocktails, beautiful ambiance, and
+              thoughtfully designed atmosphere, Mantis creates an intentional
+              social scene on nights.
             </p>
             <p className="text-gray-300 leading-relaxed paragraph_three">
-              From the first sip of an after-work drink to the last beat of a tailored DJ experience, each visit builds its own momentum.
+              From the first sip of an after-work drink to the last beat of a
+              tailored DJ experience, each visit builds its own momentum.
             </p>
           </div>
-          <div ref={image3Ref} className="hidden lg:block fade-right relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
-            <img
-              src="https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200"
+          <div
+            ref={image3Ref}
+            className="hidden lg:block fade-right relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
+          >
+            <Image
+              src={clubtwo}
               alt="Mantis Dubai Atmosphere"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
-
       </div>
     </section>
   );

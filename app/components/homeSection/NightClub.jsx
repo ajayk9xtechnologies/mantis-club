@@ -1,86 +1,75 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { ArrowUpRight, Play } from "lucide-react";
 import React from "react";
 import SectionTitle from "../SectionTitle";
 
+import img13 from "../../assets/images/gallery/gallery-10.jpeg";
+// import img14 from "../../assets/images/gallery/gallery-10.jpeg";
+// import img11 from "../../assets/images/gallery/gallery-11.jpeg";
+// import img5 from "../../assets/images/gallery/gallery-5.jpeg";
+
 const PartyDarkSection = () => {
   const sectionRef = useRef(null);
   const videoButtonRef = useRef(null);
-  const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const sections = [
     {
       title: "LATE NIGHT BEATS",
       description:
         "Those who truly know the top nightlife experiences in DIFC know how to set the right pace, read the chemistry of the crowd, and create an atmosphere for amazing nightlife. Mantis Dubai is one of the Late Night Beats in DIFC that always gets mentioned in this context.",
-      image:
-        "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=1200",
     },
     {
       title: "BALANCED ENERGY",
       description:
         "Mantis Dubai offers upbeat, energetic music, well-made cocktails, and an engaged and active crowd without the chaos or theatrics sometimes found in other clubs. The room is filled with a mix of house, commercial, Afrobeat, and international music.",
-      image:
-        "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=1200",
     },
     {
       title: "NATURAL MOMENTUM",
       description:
         "The Top Late Night Club in DIFC provides a natural momentum from one experience to the next, with drinks that are on point, music that uplifts, and a crowd that enhances the overall experience of the night.",
-      image:
-        "https://images.unsplash.com/photo-1571266028243-d220c265aeb2?w=1200",
     },
     {
       title: "TRENDY CROWD",
       description:
         "Mantis attracts a crowd that understands the balance between style and substance. DIFC professionals, creatives, and socially tuned regulars shape the energy of the room, creating an atmosphere that feels confident, social, and naturally engaging.",
-      image:
-        "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=1200",
     },
   ];
 
+  // Rotate circular video text
   useEffect(() => {
-    // Rotating video button animation
-    let animation;
-    if (videoButtonRef.current?.querySelector("svg")) {
-      const svg = videoButtonRef.current.querySelector("svg");
-      let rotation = 0;
-      const animate = () => {
-        rotation += 0.5;
-        svg.style.transform = `rotate(${rotation}deg)`;
-        animation = requestAnimationFrame(animate);
-      };
-      animation = requestAnimationFrame(animate);
-    }
+    let rafId;
+    const svg = videoButtonRef.current?.querySelector("svg");
+    if (!svg) return;
 
-    return () => {
-      if (animation) cancelAnimationFrame(animation);
+    let rotation = 0;
+    const animate = () => {
+      rotation += 0.4;
+      svg.style.transform = `rotate(${rotation}deg)`;
+      rafId = requestAnimationFrame(animate);
     };
+    rafId = requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(rafId);
   }, []);
 
   return (
     <section
       ref={sectionRef}
-      className="relative w-full py-20 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden"
+      className="relative w-full py-20 md:py-32 px-6 md:px-12 lg:px-20 overflow-hidden bg-black"
     >
-      {/* Full Section Background Image */}
+      {/* ✅ FIXED BACKGROUND IMAGE (NO HOVER) */}
       <div
-        className={`absolute inset-0 pointer-events-none transition-opacity duration-700 ${
-          hoveredIndex !== null ? "opacity-20" : "opacity-0"
-        }`}
-      >
-        {hoveredIndex !== null && (
-          <img
-            src={sections[hoveredIndex].image}
-            alt={sections[hoveredIndex].title}
-            className="w-full h-full object-cover object-center"
-          />
-        )}
-      </div>
+        className="absolute inset-0 pointer-events-none opacity-20"
+        style={{
+          backgroundImage: `url(${img13.src})`,
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+        }}
+      />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Circular Video Button - Top Right */}
+        {/* Circular Video Button */}
         <div
           ref={videoButtonRef}
           className="absolute top-8 right-8 md:top-12 md:right-12 hidden lg:block z-20"
@@ -103,11 +92,12 @@ const PartyDarkSection = () => {
                 fill="#f8db98"
                 style={{ letterSpacing: "6px" }}
               >
-                <textPath href="#circlePathParty" startOffset="0%">
+                <textPath href="#circlePathParty">
                   WATCH VIDEO • MANTIS DUBAI •
                 </textPath>
               </text>
             </svg>
+
             <a
               href="https://www.youtube.com/watch?v=48_q9A9cH1s"
               target="_blank"
@@ -126,48 +116,29 @@ const PartyDarkSection = () => {
           description="DIFC Night Club"
         />
 
-        {/* Sections List */}
+        {/* Content Rows */}
         <div className="space-y-0">
           {sections.map((section, index) => (
             <div
               key={index}
-              className="party-row border-b border-gray-800 last:border-b-0 cursor-pointer"
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              className="border-b border-gray-800 last:border-b-0"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center py-8 md:py-12 lg:py-16">
-                {/* Section Title */}
                 <div className="lg:col-span-3">
                   <h3 className="text-white font-bold tracking-tight">
                     {section.title}
                   </h3>
                 </div>
 
-                {/* Description */}
                 <div className="lg:col-span-7">
                   <p className="text-gray-400 paragraph_three leading-relaxed">
                     {section.description}
                   </p>
                 </div>
 
-                {/* Arrow Button */}
                 <div className="lg:col-span-2 flex justify-start lg:justify-end">
-                  <button
-                    className={`w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center transition-all duration-300 ${
-                      hoveredIndex === index
-                        ? "bg-[#f8db98] scale-110"
-                        : index === 0
-                        ? "bg-[#f8db98]"
-                        : "bg-white"
-                    }`}
-                  >
-                    <ArrowUpRight
-                      className={`w-6 h-6 md:w-7 md:h-7 transition-colors ${
-                        hoveredIndex === index || index === 0
-                          ? "text-black"
-                          : "text-black"
-                      }`}
-                    />
+                  <button className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#f8db98] flex items-center justify-center">
+                    <ArrowUpRight className="w-6 h-6 md:w-7 md:h-7 text-black" />
                   </button>
                 </div>
               </div>
