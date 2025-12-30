@@ -136,7 +136,7 @@ const PartyDarkSection = () => {
                   </p>
                 </div>
 
-                <div className="lg:col-span-2 flex justify-start lg:justify-end">
+                <div className="hidden lg:block lg:col-span-2 flex justify-start lg:justify-end">
                   <button className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-[#f8db98] flex items-center justify-center">
                     <ArrowUpRight className="w-6 h-6 md:w-7 md:h-7 text-black" />
                   </button>

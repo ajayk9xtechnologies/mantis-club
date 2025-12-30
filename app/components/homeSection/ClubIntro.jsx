@@ -63,7 +63,7 @@ const ClubIntro = () => {
         {/* Main Heading */}
         <div className="mb-10 md:mb-20 text-center lg:text-left">
           <h1 className="text-white leading-tight lg:mb-6">
-            <span className="bg-gradient-to-r from-[#6b5a2e] via-[#D4AF37] to-[#f8db98] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#6b5a2e] via-[#f8db98] to-[#f8db98] bg-clip-text text-transparent">
               Nightclub in Dubai
             </span>{" "}
             DIFC - Mantis Dubai
