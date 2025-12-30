@@ -12,7 +12,7 @@ export default function MenuSection({ isOpen, onClose }) {
       ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
       style={{ pointerEvents: isOpen ? "auto" : "none" }}
     >
-      {/* BACKGROUND */}
+     
       <div className="absolute inset-0 bg-black">
         {/* subtle gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0b0b] to-black opacity-90" />
@@ -49,7 +49,7 @@ export default function MenuSection({ isOpen, onClose }) {
             <ul className="space-y-6 font-bold">
           {[
             { label: "Home", href: "/" },
-            { label: "About Us", href: "/about" },
+            { label: "About Us", href: "/about-us" },
             { label: "Gallery", href: "/gallery" },
             { label: "Contact", href: "/contact" },
             { label: "Book Now", href: "/contact" },

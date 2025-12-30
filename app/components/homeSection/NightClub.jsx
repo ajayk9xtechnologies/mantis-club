@@ -148,7 +148,7 @@ const PartyDarkSection = () => {
 
         {/* Bottom CTA */}
         <div className="mt-16 md:mt-24 text-center">
-          <p className="text-gray-400 paragraph_two mb-6">
+          <p className="text-[#fff] paragraph_two mb-6">
             The result is a space where interaction feels easy, nights feel
             fluid, and the experience is driven as much by the people as by the
             music and cocktails.

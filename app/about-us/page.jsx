@@ -11,17 +11,19 @@ export default function AboutPage() {
     <LenisProvider>
       <main className="bg-black text-foreground">
         {/* Hero */}
-        <section className="relative overflow-hidden mt-30">
+        <section className="relative overflow-hidden pt-10 lg:pt-30">
           <div className="absolute inset-0 bg-gradient-to-b from-black via-black/80 to-black/60" />
           <div className="relative mx-auto max-w-6xl px-4 py-20 sm:py-24">
-            <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs tracking-widest text-white/80">
+            <p className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs tracking-widest text-white/80 mb-4">
               MANTIS DUBAI
             </p>
 
-            <h1 className="mt-6 text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Where the Night Comes Alive
+            <h1 className="text-white leading-tight lg:mb-6">
+              <span className="bg-gradient-to-r from-[#6b5a2e] via-[#f8db98] to-[#f8db98] bg-clip-text text-transparent">
+                Where the Night
+              </span>{" "}
+              Comes Alive
             </h1>
-
             <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/80 sm:text-lg">
               Mantis Dubai is a nightlife destination created for those who
               don’t settle for average nights. We exist at the intersection of
