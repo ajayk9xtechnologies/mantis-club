@@ -12,7 +12,7 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#000] text-white px-6 md:px-16 py-24">
+    <footer className="bg-[#060606] text-white px-6 md:px-16 py-24">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-20 items-start">
 
         {/* LEFT : BRAND */}
@@ -45,7 +45,7 @@ export default function Footer() {
           <SafeLink href="/gallery" className="block hover:text-[#f8db98]">Gallery</SafeLink>
           <SafeLink href="/contact" className="block hover:text-[#f8db98]">Contact</SafeLink>
         </div>
-        
+
         {/* RIGHT : SOCIAL + GOOGLE */}
         <div className="space-y-6">
           <h4 className="font-semibold text-white tracking-wide">
@@ -60,8 +60,8 @@ export default function Footer() {
           </div>
 
           {/* GOOGLE REVIEWS */}
-          
-           <a href="https://www.google.com/search?sca_esv=76c4bff7d1a872fc&sxsrf=AE3TifMKVLhG3m5sCM-GuaGLtxFuX5Fo4A:1767086986263&q=mantis+club+dubai&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E3Rzhu45nDQN2NbgXW8aGinxA7JyMXtbtksdYStt2YN_aJvm_ZsD-B67j5HGHo6flDEijJOcQzImc0JbZOAW2CntoRqp&sa=X&sqi=2&ved=2ahUKEwiL1-mAgOWRAxWnlP0HHQlUAUIQrrQLegQINRAA&biw=1916&bih=898&dpr=1"
+
+          <a href="https://www.google.com/search?sca_esv=76c4bff7d1a872fc&sxsrf=AE3TifMKVLhG3m5sCM-GuaGLtxFuX5Fo4A:1767086986263&q=mantis+club+dubai&si=AMgyJEtREmoPL4P1I5IDCfuA8gybfVI2d5Uj7QMwYCZHKDZ-E3Rzhu45nDQN2NbgXW8aGinxA7JyMXtbtksdYStt2YN_aJvm_ZsD-B67j5HGHo6flDEijJOcQzImc0JbZOAW2CntoRqp&sa=X&sqi=2&ved=2ahUKEwiL1-mAgOWRAxWnlP0HHQlUAUIQrrQLegQINRAA&biw=1916&bih=898&dpr=1"
             target="_blank"
             className="inline-block mt-4"
           >
