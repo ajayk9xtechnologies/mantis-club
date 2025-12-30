@@ -27,7 +27,6 @@ const HeroVideo = () => {
     const t = setTimeout(() => setVideoLoaded(true), 500);
     return () => clearTimeout(t);
   }, []);
-
   const toYoutube = () => {
     return window.open("https://www.youtube.com/@mantisdubai6438", "_blank");
   };

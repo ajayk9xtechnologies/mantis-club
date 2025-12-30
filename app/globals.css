@@ -67,11 +67,11 @@ h1 {
 }
 
 h2 {
-  font-size: clamp(32px, 4vw, 50px);
+  font-size: clamp(30px, 4vw, 46px);
 }
 
 h3 {
-  font-size: clamp(24px, 3vw, 45px);
+  font-size: clamp(24px, 3vw, 40px);
 }
  
 .paragraph_one {
@@ -81,7 +81,7 @@ h3 {
   font-size: clamp(24px, 3vw, 34px);
 }
 .paragraph_three {
-  font-size: clamp(16px, 3vw, 26px);
+  font-size: clamp(16px, 3vw, 23px);
 }
 
 .text-color-one {

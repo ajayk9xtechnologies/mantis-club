@@ -2,8 +2,8 @@
 import { useEffect, useRef } from "react";
 import React from "react";
 import clubone from "../../assets/images/clubone.jpg";
-import clubThree from "../../assets/images/DSC01584-2048x1365.jpg";
-import clubtwo from "../../assets/images/DSC01579-3-scaled.jpg";
+ import clubof2 from "../../assets/images/clubof4.jpg";
+import clubof1 from "../../assets/images/clubof5.jpg";
 import Image from "next/image";
 const ClubIntro = () => {
   const sectionRef = useRef(null);
@@ -109,7 +109,7 @@ const ClubIntro = () => {
             className="fade-left relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
-              src={clubThree}
+              src={clubof2}
               alt="Mantis Dubai Dance Floor"
               className="w-full h-full object-cover"
             />
@@ -153,9 +153,9 @@ const ClubIntro = () => {
             className="hidden lg:block fade-right relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
-              src={clubtwo}
+              src={clubof1}
               alt="Mantis Dubai Atmosphere"
-              className="w-full h-full object-contain"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>

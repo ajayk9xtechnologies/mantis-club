@@ -42,6 +42,7 @@ export default function Footer() {
             NAVIGATION
           </h4>
           <SafeLink href="#mantis" className="block hover:text-[#f8db98]">Home</SafeLink>
+          <SafeLink href="/about-us" className="block hover:text-[#f8db98]">About Us</SafeLink>
           <SafeLink href="/gallery" className="block hover:text-[#f8db98]">Gallery</SafeLink>
           <SafeLink href="/contact" className="block hover:text-[#f8db98]">Contact</SafeLink>
         </div>

@@ -12,6 +12,10 @@ import MantisImageFour from "./../../assets/images/DSC01579-3-scaled.jpg";
 import Button from "../Button";
 import Link from "next/link";
 import SectionTitle from "../SectionTitle";
+import GlassIcon1 from "./../../assets/images/svg/aaaa.svg";
+import GlassIcon2 from "./../../assets/images/svg/bbbb.svg";
+import GlassIcon3 from "./../../assets/images/svg/cccc.svg";
+import GlassIcon4 from "./../../assets/images/svg/dddd.svg";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -89,20 +93,34 @@ export default function HorizontalScroll() {
       ScrollTrigger.getAll().forEach((trigger) => {
         try {
           trigger.kill(true);
-        } catch (e) {}
+        } catch (e) { }
       });
 
       if (ctx) {
         try {
           ctx.revert();
-        } catch (e) {}
+        } catch (e) { }
       }
     };
   }, []);
 
   return (
-    <section className="bg-black py-16 px-4">
-      <div ref={galleryRef} className="container mx-auto max-w-7xl">
+    <section className="bg-black py-16 px-4 relative overflow-hidden">
+      {/* Decorative Icons */}
+      <div className="absolute top-10 left-10 w-24 h-24 opacity-20 rotate-12 pointer-events-none z-0 hidden lg:block">
+        <Image src={GlassIcon1} alt="Decoration" fill className="object-contain" />
+      </div>
+      <div className="absolute top-20 right-10 w-32 h-32 opacity-20 -rotate-12 pointer-events-none z-0 hidden lg:block">
+        <Image src={GlassIcon2} alt="Decoration" fill className="object-contain" />
+      </div>
+      <div className="absolute bottom-20 left-20 w-28 h-28 opacity-20 rotate-45 pointer-events-none z-0 hidden lg:block">
+        <Image src={GlassIcon3} alt="Decoration" fill className="object-contain" />
+      </div>
+      <div className="absolute bottom-10 right-20 w-36 h-36 opacity-20 -rotate-6 pointer-events-none z-0 hidden lg:block">
+        <Image src={GlassIcon4} alt="Decoration" fill className="object-contain" />
+      </div>
+
+      <div ref={galleryRef} className="container mx-auto max-w-7xl relative z-10">
         <SectionTitle
           title="Photo"
           subtitle="Gallery"
