@@ -26,7 +26,7 @@ import img17 from "../../app/assets/images/gallery/gallery-17.jpeg";
 import img18 from "../../app/assets/images/gallery/gallery-18.jpeg";
 import img19 from "../../app/assets/images/gallery/gallery-19.jpeg";
 import img20 from "../../app/assets/images/gallery/gallery-20.jpeg";
-
+import Champagne from "../assets/images/Champagne.png"
 import SectionTitle from "../components/SectionTitle";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -94,18 +94,15 @@ export default function HorizontalScroll() {
   return (
 
 
-    <section className="relative bg-black py-20 px-4 overflow-hidden">
-      {/* ===== BACKGROUND IMAGE ===== */}
-      <div className="absolute inset-0">
-        <Image
-          src={img4}                // any image you like
-          alt=""
-          fill
-          priority
-          className="object-cover opacity-60 blur-sm"
-        />
-        <div className="absolute inset-0 bg-black/70" />
-      </div>
+    <section
+  className="bg-black py-16 px-4 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-black/90 before:z-0"
+  style={{
+    backgroundImage: `url(${Champagne.src})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "repeat-y",
+    backgroundPosition: "center",
+  }}
+>
 
       {/* ===== CONTENT ===== */}
       <div ref={galleryRef} className="relative z-10 mx-auto max-w-7xl">

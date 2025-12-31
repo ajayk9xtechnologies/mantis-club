@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
@@ -9,14 +9,14 @@ import MantisImageOne from "./../../assets/images/DSC01432-scaled.jpg";
 import MantisImageTwo from "./../../assets/images/DSC01389-2048x1365.jpg";
 import MantisImageThree from "./../../assets/images/DSC01362-1-1024x683.jpg";
 import MantisImageFour from "./../../assets/images/DSC01579-3-scaled.jpg";
-import Button from "../Button";
-import Link from "next/link";
 import SectionTitle from "../SectionTitle";
-import GlassIcon1 from "./../../assets/images/svg/aaaa.svg";
-import GlassIcon2 from "./../../assets/images/svg/bbbb.svg";
-import GlassIcon3 from "./../../assets/images/svg/cccc.svg";
-import GlassIcon4 from "./../../assets/images/svg/dddd.svg";
-
+// import GlassIcon1 from "./../../assets/images/svg/champagne-glass.png";
+// import GlassIcon2 from "./../../assets/images/svg/champagne.png";
+// import GlassIcon3 from "./../../assets/images/svg/cocktail.png";
+// import GlassIcon4 from "./../../assets/images/svg/wine-glasses.png";
+// import GlassIcon5 from "./../../assets/images/svg/soda.png";
+// import GlassIcon6 from "./../../assets/images/svg/wine-glasses.png";
+import Champagne from "../../assets/images/Champagne.png";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function HorizontalScroll() {
@@ -93,34 +93,31 @@ export default function HorizontalScroll() {
       ScrollTrigger.getAll().forEach((trigger) => {
         try {
           trigger.kill(true);
-        } catch (e) { }
+        } catch (e) {}
       });
 
       if (ctx) {
         try {
           ctx.revert();
-        } catch (e) { }
+        } catch (e) {}
       }
     };
   }, []);
 
   return (
-    <section className="bg-black py-16 px-4 relative overflow-hidden">
-      {/* Decorative Icons */}
-      <div className="absolute top-10 left-10 w-24 h-24 opacity-20 rotate-12 pointer-events-none z-0 hidden lg:block">
-        <Image src={GlassIcon1} alt="Decoration" fill className="object-contain" />
-      </div>
-      <div className="absolute top-20 right-10 w-32 h-32 opacity-20 -rotate-12 pointer-events-none z-0 hidden lg:block">
-        <Image src={GlassIcon2} alt="Decoration" fill className="object-contain" />
-      </div>
-      <div className="absolute bottom-20 left-20 w-28 h-28 opacity-20 rotate-45 pointer-events-none z-0 hidden lg:block">
-        <Image src={GlassIcon3} alt="Decoration" fill className="object-contain" />
-      </div>
-      <div className="absolute bottom-10 right-20 w-36 h-36 opacity-20 -rotate-6 pointer-events-none z-0 hidden lg:block">
-        <Image src={GlassIcon4} alt="Decoration" fill className="object-contain" />
-      </div>
-
-      <div ref={galleryRef} className="container mx-auto max-w-7xl relative z-10">
+    <section
+  className="bg-black py-16 px-4 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-black/90 before:z-0"
+  style={{
+    backgroundImage: `url(${Champagne.src})`,
+    backgroundSize: "cover",
+    backgroundRepeat: "repeat-y",
+    backgroundPosition: "center",
+  }}
+>
+      <div
+        ref={galleryRef}
+        className="container mx-auto max-w-7xl relative z-10"
+      >
         <SectionTitle
           title="Photo"
           subtitle="Gallery"
@@ -164,7 +161,6 @@ export default function HorizontalScroll() {
         </div>
       </div>
 
-      {/* Image Popup Modal */}
       {selectedImage && (
         <div
           className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center p-4 animate-fadeIn"

@@ -122,7 +122,7 @@ const PartyDarkSection = () => {
           {sections.map((section, index) => (
             <div
               key={index}
-              className="border-b border-gray-800 last:border-b-0"
+              className="border-b border-gray-200 last:border-b-0"
             >
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center py-8 md:py-12 lg:py-16">
                 <div className="lg:col-span-3">

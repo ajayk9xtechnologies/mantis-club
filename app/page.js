@@ -8,9 +8,9 @@ import NightClub from "./components/homeSection/NightClub";
 export default function Home() {
   return (
     <>
-      <HeroVideo />
+      {/* <HeroVideo />
       <ClubIntro />
-      <StorySection />
+      <StorySection /> */}
       <HorizontalScroll />
       <NightClub />
       <Contact />
