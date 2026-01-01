@@ -6,7 +6,8 @@ import {
   Instagram,
   Facebook,
   Music2,
-  MessageCircle
+  MessageCircle,
+  Armchair
 } from "lucide-react";
 
 export default function Footer() {
@@ -27,12 +28,12 @@ export default function Footer() {
           <h3 className="font-bold leading-tight">
             LET S PARTY <br /> TOGETHER
           </h3>
-          <SafeLink
-            href="#contact"
+          <a
+            href="https://api.whatsapp.com/send?phone=+971565607007" target="_blank"
             className="inline-flex items-center gap-3 bg-[#f8db98] text-black px-6 py-3 rounded-full font-semibold hover:scale-105 transition"
           >
-            LET S TALK
-          </SafeLink>
+            <Armchair/>Book Now
+          </a>
         </div>
 
         {/* CENTER : NAV */}
@@ -59,7 +60,7 @@ export default function Footer() {
             <a href="https://www.instagram.com/mantisdubai" target="_blank" rel="noopener noreferrer" className="social"><Instagram /></a>
             <a href="https://www.facebook.com/MantisDubai/" target="_blank" rel="noopener noreferrer" className="social"><Facebook /></a>
             <a href="https://www.tiktok.com/en/" target="_blank" rel="noopener noreferrer" className="social"><Music2 /></a>
-            <a href="tel:+971565607007" target="_blank" rel="noopener noreferrer" className="social"><MessageCircle /></a>
+            <a href="https://api.whatsapp.com/send?phone=+971565607007" target="_blank" rel="noopener noreferrer" className="social"><MessageCircle /></a>
           </div>
 
           {/* GOOGLE REVIEWS */}
