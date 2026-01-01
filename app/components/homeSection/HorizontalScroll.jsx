@@ -9,7 +9,7 @@ import {
   MantisImageThree, 
   MantisImageTwo,  
   MantisImageOne,  
-  MantisImageFive,  
+  MantisImageFive,champagne
 } from "../../common";
 
 import SectionTitle from "../SectionTitle";
@@ -106,21 +106,15 @@ export default function HorizontalScroll() {
   }, []);
 
   return (
-    <section className="bg-black py-16 px-4 relative overflow-hidden">
-      {/* Decorative Icons */}
-      {/* <div className="absolute top-10 left-10 w-24 h-24 opacity-20 rotate-12 pointer-events-none z-0 hidden lg:block">
-        <Image src={GlassIcon1} alt="Decoration" fill className="object-contain" />
-      </div> */}
-      {/* <div className="absolute top-20 right-10 w-32 h-32 opacity-20 -rotate-12 pointer-events-none z-0 hidden lg:block">
-        <Image src={GlassIcon2} alt="Decoration" fill className="object-contain" />
-      </div> */}
-      {/* <div className="absolute bottom-20 left-20 w-28 h-28 opacity-20 rotate-45 pointer-events-none z-0 hidden lg:block">
-        <Image src={GlassIcon3} alt="Decoration" fill className="object-contain" />
-      </div> */}
-      {/* <div className="absolute bottom-10 right-20 w-36 h-36 opacity-20 -rotate-6 pointer-events-none z-0 hidden lg:block">
-        <Image src={GlassIcon4} alt="Decoration" fill className="object-contain" />
-      </div> */}
-
+   <section
+      className="bg-black py-16 px-4 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-black/90 before:z-0"
+      style={{
+        backgroundImage: `url(${champagne.src})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "repeat-y",
+        backgroundPosition: "center",
+      }}
+    >
       <div ref={galleryRef} className="container mx-auto max-w-7xl relative z-10">
         <SectionTitle
           title="Photo"

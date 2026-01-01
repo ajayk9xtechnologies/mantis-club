@@ -24,7 +24,6 @@ import {
   MantisImageFourteen,
   galleryClubImage1,
   galleryClubImage2,
-  // galleryClubImage3,
   galleryClubImage4,
   galleryClubImage5,
   galleryClubImage6,
@@ -33,6 +32,7 @@ import {
   // galleryClubImage9,
   galleryClubImage10,
   galleryClubImage11,
+  champagne,
 } from "../../app/common";
 
 import SectionTitle from "../components/SectionTitle";
@@ -61,7 +61,6 @@ export default function HorizontalScroll() {
     { src: MantisImageFourteen },
     { src: galleryClubImage1 },
     { src: galleryClubImage2 },
-    // { src: galleryClubImage3 },
     { src: galleryClubImage4 },
     { src: galleryClubImage5 },
     { src: galleryClubImage6 },
@@ -70,6 +69,7 @@ export default function HorizontalScroll() {
     // { src: galleryClubImage9 },
     { src: galleryClubImage10 },
     { src: galleryClubImage11 },
+  
   ];
 
   useEffect(() => {
@@ -106,21 +106,15 @@ export default function HorizontalScroll() {
   }, []);
 
   return (
-
-
-    <section className="relative bg-black py-20 px-4 overflow-hidden">
-      {/* ===== BACKGROUND IMAGE ===== */}
-      <div className="absolute inset-0">
-        <Image
-          src={galleryClubImage4}                // any image you like
-          alt=""
-          fill
-          priority
-          className="object-cover opacity-60 blur-sm"
-        />
-        <div className="absolute inset-0 bg-black/70" />
-      </div>
-
+    <section
+      className="bg-black py-16 px-4 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-black/90 before:z-0"
+      style={{
+        backgroundImage: `url(${champagne.src})`,
+        backgroundSize: "cover",
+        backgroundRepeat: "repeat-y",
+        backgroundPosition: "center",
+      }}
+    >
       {/* ===== CONTENT ===== */}
       <div ref={galleryRef} className="relative z-10 mx-auto max-w-7xl">
         <SectionTitle
@@ -159,7 +153,6 @@ export default function HorizontalScroll() {
             </div>
           ))}
         </div>
-
       </div>
 
       {/* MODAL */}
