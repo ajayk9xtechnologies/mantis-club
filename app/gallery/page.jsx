@@ -6,27 +6,35 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import Link from "next/link";
 
-import img1 from "../../app/assets/images/gallery/gallery-1.jpeg";
-import img2 from "../../app/assets/images/gallery/gallery-2.jpeg";
-import img3 from "../../app/assets/images/gallery/gallery-3.jpeg";
-import img4 from "../../app/assets/images/gallery/gallery-4.jpeg";
-import img5 from "../../app/assets/images/gallery/gallery-5.jpeg";
-import img6 from "../../app/assets/images/gallery/gallery-6.jpeg";
-import img7 from "../../app/assets/images/gallery/gallery-7.jpeg";
-import img8 from "../../app/assets/images/gallery/gallery-8.jpeg";
-import img9 from "../../app/assets/images/gallery/gallery-9.jpeg";
-import img10 from "../../app/assets/images/gallery/gallery-10.jpeg";
-import img11 from "../../app/assets/images/gallery/gallery-11.jpeg";
-import img12 from "../../app/assets/images/gallery/gallery-12.jpeg";
-import img13 from "../../app/assets/images/gallery/gallery-13.jpeg";
-import img14 from "../../app/assets/images/gallery/gallery-14.jpeg";
-import img15 from "../../app/assets/images/gallery/gallery-15.jpeg";
-import img16 from "../../app/assets/images/gallery/gallery-16.jpeg";
-import img17 from "../../app/assets/images/gallery/gallery-17.jpeg";
-import img18 from "../../app/assets/images/gallery/gallery-18.jpeg";
-import img19 from "../../app/assets/images/gallery/gallery-19.jpeg";
-import img20 from "../../app/assets/images/gallery/gallery-20.jpeg";
-import Champagne from "../assets/images/Champagne.png"
+import {
+  MantisImage,
+  MantisImageOne,
+  MantisImageTwo,
+  MantisImageThree,
+  MantisImageFour,
+  MantisImageFive,
+  MantisImageSix,
+  MantisImageSeven,
+  MantisImageEight,
+  MantisImageNine,
+  MantisImageTen,
+  MantisImageEleven,
+  MantisImageTwevele,
+  MantisImageThirteen,
+  MantisImageFourteen,
+  galleryClubImage1,
+  galleryClubImage2,
+  // galleryClubImage3,
+  galleryClubImage4,
+  galleryClubImage5,
+  galleryClubImage6,
+  galleryClubImage7,
+  galleryClubImage8,
+  // galleryClubImage9,
+  galleryClubImage10,
+  galleryClubImage11,
+} from "../../app/common";
+
 import SectionTitle from "../components/SectionTitle";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -36,26 +44,32 @@ export default function HorizontalScroll() {
   const [selectedImage, setSelectedImage] = useState(null);
 
   const mantisImg = [
-    { src: img1 },
-    { src: img2 },
-    { src: img3 },
-    { src: img4 },
-    { src: img5 },
-    { src: img6 },
-    { src: img7 },
-    { src: img8 },
-    { src: img9 },
-    { src: img10 },
-    { src: img11 },
-    { src: img12 },
-    { src: img13 },
-    { src: img14 },
-    { src: img15 },
-    { src: img16 },
-    { src: img17 },
-    { src: img18 },
-    { src: img19 },
-    { src: img20 },
+    { src: MantisImage },
+    { src: MantisImageOne },
+    { src: MantisImageTwo },
+    { src: MantisImageThree },
+    { src: MantisImageFour },
+    { src: MantisImageFive },
+    { src: MantisImageSix },
+    { src: MantisImageSeven },
+    { src: MantisImageEight },
+    { src: MantisImageNine },
+    { src: MantisImageTen },
+    { src: MantisImageEleven },
+    { src: MantisImageTwevele },
+    { src: MantisImageThirteen },
+    { src: MantisImageFourteen },
+    { src: galleryClubImage1 },
+    { src: galleryClubImage2 },
+    // { src: galleryClubImage3 },
+    { src: galleryClubImage4 },
+    { src: galleryClubImage5 },
+    { src: galleryClubImage6 },
+    { src: galleryClubImage7 },
+    { src: galleryClubImage8 },
+    // { src: galleryClubImage9 },
+    { src: galleryClubImage10 },
+    { src: galleryClubImage11 },
   ];
 
   useEffect(() => {
@@ -94,15 +108,18 @@ export default function HorizontalScroll() {
   return (
 
 
-    <section
-  className="bg-black py-16 px-4 relative overflow-hidden before:content-[''] before:absolute before:inset-0 before:bg-black/90 before:z-0"
-  style={{
-    backgroundImage: `url(${Champagne.src})`,
-    backgroundSize: "cover",
-    backgroundRepeat: "repeat-y",
-    backgroundPosition: "center",
-  }}
->
+    <section className="relative bg-black py-20 px-4 overflow-hidden">
+      {/* ===== BACKGROUND IMAGE ===== */}
+      <div className="absolute inset-0">
+        <Image
+          src={galleryClubImage4}                // any image you like
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-60 blur-sm"
+        />
+        <div className="absolute inset-0 bg-black/70" />
+      </div>
 
       {/* ===== CONTENT ===== */}
       <div ref={galleryRef} className="relative z-10 mx-auto max-w-7xl">

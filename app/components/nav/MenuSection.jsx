@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import logo from "../../assets/images/Mantis_logo-removebg-preview-300x150.png";
+import { mantisLogo } from "../../common";
 import SafeLink from "../SafeLink";
 
 export default function MenuSection({ isOpen, onClose }) {
@@ -12,7 +12,7 @@ export default function MenuSection({ isOpen, onClose }) {
       ${isOpen ? "translate-y-0" : "-translate-y-full"}`}
       style={{ pointerEvents: isOpen ? "auto" : "none" }}
     >
-     
+
       <div className="absolute inset-0 bg-black">
         {/* subtle gradient */}
         <div className="absolute inset-0 bg-gradient-to-b from-black via-[#0b0b0b] to-black opacity-90" />
@@ -25,7 +25,7 @@ export default function MenuSection({ isOpen, onClose }) {
         {/* HEADER */}
         <div className="flex justify-between items-center px-6 lg:px-12 py-5">
           <SafeLink href="/" onNavigate={onClose}>
-            <Image src={logo} alt="Mantis logo" width={180} />
+            <Image src={mantisLogo} alt="Mantis logo" width={180} />
           </SafeLink>
 
           <button
@@ -41,29 +41,57 @@ export default function MenuSection({ isOpen, onClose }) {
 
         {/* MENU */}
         <div className="flex-1 flex items-center px-8 lg:px-20">
-          <div className="w-full max-w-4xl">
-            <p className="uppercase text-xs tracking-[0.3em] opacity-60 mb-10">
-              Explore
-            </p>
+          <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24">
 
-            <ul className="space-y-6 font-bold">
-          {[
-            { label: "Home", href: "/" },
-            { label: "About Us", href: "/about-us" },
-            { label: "Gallery", href: "/gallery" },
-            { label: "Contact", href: "/contact" },
-            { label: "Book Now", href: "/contact" },
-          ].map((item) => (
-            <li
-              key={item.label}
-              className="text-5xl md:text-6xl tracking-wide hover:opacity-60 transition"
-            >
-              <SafeLink href={item.href} onNavigate={onClose}>
-                {item.label}
-              </SafeLink>
-            </li>
-          ))}
-        </ul>
+            {/* LEFT COLUMN: EXPLORE */}
+            <div>
+              <p className="uppercase text-xs tracking-[0.3em] opacity-60 mb-8 lg:mb-10">
+                Explore
+              </p>
+
+              <ul className="space-y-4 lg:space-y-6 font-bold">
+                {[
+                  { label: "Home", href: "/" },
+                  { label: "About Us", href: "/about-us" },
+                  { label: "Gallery", href: "/gallery" },
+                  { label: "Contact", href: "/contact" },
+                  { label: "Book Now", href: "/contact" }, // Assuming Book Now goes to contact for now
+                ].map((item) => (
+                  <li
+                    key={item.label}
+                    className="text-4xl md:text-5xl lg:text-6xl tracking-wide hover:opacity-60 transition"
+                  >
+                    <SafeLink href={item.href} onNavigate={onClose}>
+                      {item.label}
+                    </SafeLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* RIGHT COLUMN: COMMUNITY */}
+            <div>
+              <p className="uppercase text-xs tracking-[0.3em] opacity-60 mb-8 lg:mb-10">
+                Community
+              </p>
+
+              <ul className="space-y-4 lg:space-y-6 font-bold">
+                {[
+                  { label: "Blogs", href: "/blogs" },
+                  { label: "Terms", href: "/terms" }, // Placeholder link
+                  { label: "Policy", href: "/privacy-policy" }, // Placeholder link
+                ].map((item) => (
+                  <li
+                    key={item.label}
+                    className="text-4xl md:text-5xl lg:text-6xl tracking-wide hover:opacity-60 transition"
+                  >
+                    <SafeLink href={item.href} onNavigate={onClose}>
+                      {item.label}
+                    </SafeLink>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -75,4 +103,3 @@ export default function MenuSection({ isOpen, onClose }) {
     </section>
   );
 }
- 

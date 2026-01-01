@@ -30,7 +30,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "lib/db.js", "app/lib/getBaseUrl.js"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,14 +1,18 @@
 "use client";
 import Image from "next/image";
-import logo from "../../assets/images/Mantis_logo-removebg-preview-300x150.png";
+import { mantisLogo } from "../../common";
 import { useState } from "react";
 import MenuSection from "./MenuSection";
 import SafeLink from "../SafeLink";
+import { usePathname } from 'next/navigation';
 export default function Header() {
   const [toggle, setToggle] = useState(false);
+  const pathname = usePathname();
+  const isAdminRoute = pathname === '/mc-admin' || pathname.startsWith('/mc-admin/');
   return (
     <>
-      <header className="fixed w-full z-50 backdrop-blur-xs bg-black/10">
+    {!isAdminRoute && (
+      <header className={`fixed w-full z-50 backdrop-blur-xs bg-black/10` }>
         <div className="w-full px-4 py-2">
           <div className="relative h-20 flex items-center justify-between">
             <SafeLink
@@ -16,7 +20,7 @@ export default function Header() {
               className="cursor"
               onNavigate={() => setToggle(false)}
             >
-              <Image src={logo} alt="Mantis logo" width={180} />
+              <Image src={mantisLogo} alt="Mantis logo" width={180} />
             </SafeLink>
             <div className="w-10" />
             <div className="absolute left-1/2 -translate-x-1/2 mt-10"></div>
@@ -40,7 +44,7 @@ export default function Header() {
           </div>
         </div>
       </header>
-      {/* ALWAYS MOUNTED */}
+    )}
       <MenuSection isOpen={toggle} onClose={() => setToggle(false)} />
     </>
   );

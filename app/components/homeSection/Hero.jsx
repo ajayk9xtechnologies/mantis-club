@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "next/image";
 import CircularVideoButton from "../CircularVideoButton";
 import React from "react";
-import thumbnailUrl from "../../assets/images/DSC01348-scaled.jpg";
+import { MantisImage } from "../../common";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -134,7 +134,7 @@ const HeroVideo = () => {
           <div className="absolute inset-0">
             {!videoLoaded && (
               <Image
-                src={thumbnailUrl}
+                src={MantisImage}
                 alt=""
                 fill
                 sizes="100vw"
@@ -169,8 +169,8 @@ const HeroVideo = () => {
         ></div>
 
         <div className="absolute inset-0 flex items-center justify-center px-4 z-20" onClick={toYoutube} >
-           <CircularVideoButton />
-          <svg 
+          <CircularVideoButton />
+          <svg
             ref={textGroupRef}
             className="h-auto pointer-events-none w-full max-w-[90vw] sm:max-w-[85vw] md:max-w-[80vw] lg:max-w-[75vw]"
             viewBox="0 0 1200 600"
@@ -223,7 +223,7 @@ const HeroVideo = () => {
                 <div className="relative w-full h-full">
                   {!videoLoaded && (
                     <Image
-                      src={thumbnailUrl}
+                      src={MantisImage}
                       alt=""
                       fill
                       sizes="100vw"

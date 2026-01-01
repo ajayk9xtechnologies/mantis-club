@@ -2,14 +2,14 @@ import Image from "next/image";
 import SectionTitle from "../components/SectionTitle";
 import { Mail, MapPin, Phone } from "lucide-react";
 import FormField from "../components/forms/FormField";
-import bgImage from "../assets/images/gallery/gallery-6.jpeg";
+import { galleryClubImage6 } from "../common";
 export default function ContactPage() {
   return (
     <section className="relative min-h-screen w-full bg-black text-white pt-32 pb-20 px-4 md:px-8">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src={bgImage}
+          src={galleryClubImage6}
           alt="Mantis Contact Background"
           fill
           className="object-cover opacity-30"

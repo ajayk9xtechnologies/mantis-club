@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import MantisImg from "../../assets/images/DSC01348-scaled.jpg";
+import { MantisImage } from "../../common";
 import SectionTitle from "../SectionTitle";
 const storyContent = [
   {
@@ -51,8 +51,8 @@ export default function MantisScrollSection() {
         min-h-[90vh]
       "
       style={{
-        backgroundImage: `url(${MantisImg.src})`,
-        backgroundAttachment: "fixed",  
+        backgroundImage: `url(${MantisImage.src})`,
+        backgroundAttachment: "fixed",
       }}
     >
       {/* DARK OVERLAY */}
@@ -60,12 +60,12 @@ export default function MantisScrollSection() {
 
       {/* CONTENT */}
       <div className="relative z-10 container mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 px-4 py-24">
-        
+
         {/* LEFT: STICKY IMAGE */}
         <div className="lg:col-span-5">
           <div className="sticky top-24">
             <Image
-              src={MantisImg}
+              src={MantisImage}
               alt="Mantis Dubai"
               className="w-full rounded-2xl shadow-2xl object-cover"
               priority
@@ -78,7 +78,7 @@ export default function MantisScrollSection() {
           {storyContent.map((item, i) => (
             <div key={i}>
               <SectionTitle title={item.title} subtitle={item.subTitle} description={item.text} align="start" />
-             </div>
+            </div>
           ))}
         </div>
 

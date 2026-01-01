@@ -2,7 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/nav/Footer";
 import Header from "./components/nav/Header";
-import LenisProvider from "./components/Lenis";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,10 +22,10 @@ export const metadata = {
   /* ✅ FAVICONS (CORRECT PLACE) */
   icons: {
     icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon-16x16.webp", sizes: "16x16", type: "image/webp" },
+      { url: "/favicon-32x32.webp", sizes: "32x32", type: "image/webp" },
     ],
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon.webp",
     shortcut: "/favicon.ico",
   },
 
@@ -72,11 +71,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <LenisProvider>
+        
           <Header />
           {children}
           <Footer />
-        </LenisProvider>
+    
       </body>
     </html>
   );

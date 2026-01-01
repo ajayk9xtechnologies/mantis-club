@@ -1,9 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import React from "react";
-import clubone from "../../assets/images/clubone.jpg";
- import clubof2 from "../../assets/images/clubof4.jpg";
-import clubof1 from "../../assets/images/clubof5.jpg";
+import { MantisImageTwevele, MantisImageTen, MantisImageEleven } from "../../common";
 import Image from "next/image";
 const ClubIntro = () => {
   const sectionRef = useRef(null);
@@ -68,15 +66,15 @@ const ClubIntro = () => {
             </span>{" "}
             DIFC - Mantis Dubai
           </h1>
-          
+
         </div>
 
         {/* First Block - Text Left, Image Right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20 md:mb-28 items-center">
           <div className="space-y-6">
             <h2 className="leading-tight text-color-one">
-            Where Music, Mood, and Momentum Meet 
-          </h2>
+              Where Music, Mood, and Momentum Meet
+            </h2>
             <p className="text-gray-300 paragraph_three leading-relaxed">
               Mantis Dubai is a Best nightclub in DIFC where the music flows
               with intention, where the vibe comes from the music, and where the
@@ -95,7 +93,7 @@ const ClubIntro = () => {
             className="hidden lg:block  fade-up relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
-              src={clubone}
+              src={MantisImageTwevele}
               alt="Mantis Dubai Club Interior"
               className="w-full h-full object-cover"
             />
@@ -109,13 +107,13 @@ const ClubIntro = () => {
             className="fade-left relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
-              src={clubof2}
+              src={MantisImageTen}
               alt="Mantis Dubai Dance Floor"
               className="w-full h-full object-cover"
             />
           </div>
           <div className="space-y-6 mt-5">
-            
+
             <p className="text-gray-300 paragraph_three leading-relaxed text-center ">
               Whether you are just getting off work and grabbing a drink or
               working up, Mantis is the place where music-orientated nights,
@@ -125,14 +123,14 @@ const ClubIntro = () => {
           </div>
         </div>
 
- 
+
 
         {/* Third Block - Text Left, Image Right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <div className="space-y-6">
             <h2 className="leading-tight text-color-one">
-            Top Dance Club in DIFC Dubai —Mantis Dubai
-          </h2>
+              Top Dance Club in DIFC Dubai —Mantis Dubai
+            </h2>
             <p className="text-gray-300 leading-relaxed paragraph_three">
               Located in the middle of Dubai s DIFC, Mantis is one of the best
               clubs to party in DIFC, hosting a variety of music-focused events
@@ -153,7 +151,7 @@ const ClubIntro = () => {
             className="hidden lg:block fade-right relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
           >
             <Image
-              src={clubof1}
+              src={MantisImageEleven}
               alt="Mantis Dubai Atmosphere"
               className="w-full h-full object-cover"
             />

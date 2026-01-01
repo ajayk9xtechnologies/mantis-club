@@ -10,7 +10,7 @@ export default function Video() {
           loop
           playsInline
           preload="auto"
-          poster="/placeholder.jpg"
+          poster="/placeholder.webp"
         >
           <source src="/videos/night.mp4" type="video/mp4" />
           Your browser does not support the video tag.
@@ -21,7 +21,7 @@ export default function Video() {
           <p>Some descriptive text.</p>
         </div>
       </div>
- 
+
     </>
   );
 }

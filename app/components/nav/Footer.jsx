@@ -1,7 +1,6 @@
 'use client'
 import Image from "next/image";
-import google from "../../assets/images/google.webp"
-import logo from "../../assets/images/Mantis_logo-removebg-preview-300x150.png";
+import { google, mantisLogo } from "../../common";
 import SafeLink from "../SafeLink";
 import {
   Instagram,
@@ -18,7 +17,7 @@ export default function Footer() {
         {/* LEFT : BRAND */}
         <div className="space-y-10">
           <Image
-            src={logo}
+            src={mantisLogo}
             alt="Mantis DXB"
             width={200}
             height={80}
@@ -45,6 +44,9 @@ export default function Footer() {
           <SafeLink href="/about-us" className="block hover:text-[#f8db98]">About Us</SafeLink>
           <SafeLink href="/gallery" className="block hover:text-[#f8db98]">Gallery</SafeLink>
           <SafeLink href="/contact" className="block hover:text-[#f8db98]">Contact</SafeLink>
+          <SafeLink href="/blogs" className="block hover:text-[#f8db98]">Blogs</SafeLink>
+          <SafeLink href="/terms" className="block hover:text-[#f8db98]">Terms & Conditions</SafeLink>
+          <SafeLink href="/privacy-policy" className="block hover:text-[#f8db98]">Privacy Policy</SafeLink>
         </div>
 
         {/* RIGHT : SOCIAL + GOOGLE */}
