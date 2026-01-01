@@ -2,13 +2,19 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import AdminSidebar from "./components/admin/AdminSidebar";
+import { getBaseUrl } from "../lib/getBaseUrl";
 
 export default function AdminPage() {
     const router = useRouter();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [stats, setStats] = useState({
+        blogs: 0,
+        categories: 0,
+        tags: 0,
+    });
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // Helper function to get cookie value
         const getCookie = (name) => {
             const value = `; ${document.cookie}`;
             const parts = value.split(`; ${name}=`);
@@ -20,9 +26,29 @@ export default function AdminPage() {
         if (!auth) {
             router.push("/mantis-login");
         } else {
-            setIsAuthenticated(true);
+            setTimeout(() => {
+                setIsAuthenticated(true);
+            }, 200);
+            fetchStats();
         }
     }, [router]);
+
+    const fetchStats = async () => {
+        try {
+            const response = await fetch(`${getBaseUrl()}/stats`);
+            const data = await response.json();
+
+            setStats({
+                blogs: data.blogs || 0,
+                categories: data.categories || 0,
+                tags: data.tags || 0,
+            });
+        } catch (error) {
+            console.error("Error fetching stats:", error);
+        } finally {
+            setLoading(false);
+        }
+    };
 
     if (!isAuthenticated) {
         return (
@@ -42,18 +68,24 @@ export default function AdminPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                            <h3 className="text-[#f8db98] mb-2">Total Blogs</h3>
-                            <p className="text-4xl font-bold">0</p>
+                            <h3 className="text-gray-400 text-sm mb-2">Total Blogs</h3>
+                            <p className="text-4xl font-bold text-[#f8db98]">
+                                {loading ? "..." : stats.blogs}
+                            </p>
                         </div>
 
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                            <h3 className="text-[#f8db98] mb-2">Categories</h3>
-                            <p className="text-4xl font-bold">0</p>
+                            <h3 className="text-gray-400 text-sm mb-2">Total Categories</h3>
+                            <p className="text-4xl font-bold text-[#f8db98]">
+                                {loading ? "..." : stats.categories}
+                            </p>
                         </div>
 
                         <div className="bg-white/5 border border-white/10 rounded-2xl p-6">
-                            <h3 className="text-[#f8db98] mb-2">Tags</h3>
-                            <p className="text-4xl font-bold">0</p>
+                            <h3 className="text-gray-400 text-sm mb-2">Total Tags</h3>
+                            <p className="text-4xl font-bold text-[#f8db98]">
+                                {loading ? "..." : stats.tags}
+                            </p>
                         </div>
                     </div>
 

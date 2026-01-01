@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import AdminSidebar from "../components/admin/AdminSidebar";
 import { Plus, Edit, Trash2 } from "lucide-react";
 import Link from "next/link";
-import {getBaseUrl} from "../../lib/getBaseUrl";
+import { getBaseUrl } from "../../lib/getBaseUrl";
 export default function BlogsPage() {
     const router = useRouter();
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -16,6 +16,7 @@ export default function BlogsPage() {
     const [editingBlog, setEditingBlog] = useState(null);
     const [formData, setFormData] = useState({
         title: "",
+        slug: "",
         description: "",
         content: "",
         category: "",
@@ -65,16 +66,21 @@ export default function BlogsPage() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            const payload = editingBlog
+                ? { ...formData, _id: editingBlog._id }
+                : formData;
+
             const response = await fetch(`${getBaseUrl()}/blog`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(payload),
             });
 
             if (response.ok) {
                 setShowModal(false);
                 setFormData({
                     title: "",
+                    slug: "",
                     description: "",
                     content: "",
                     category: "",
@@ -90,12 +96,12 @@ export default function BlogsPage() {
     };
 
     const handleDelete = async (id) => {
-         
+
         try {
             const response = await fetch(`${getBaseUrl()}/blog?id=${id}`, {
-                method: "POST",
+                method: "DELETE",
                 headers: { "Content-Type": "application/json" },
-             });
+            });
 
             if (response.ok) {
                 fetchData();
@@ -104,7 +110,22 @@ export default function BlogsPage() {
             console.error("Error saving blog:", error);
         }
     };
- 
+
+    const handleEdit = (blog) => {
+        setEditingBlog(blog);
+        setFormData({
+            title: blog.title,
+            slug: blog.title.replace(/\s+/g, '-').toLowerCase(),
+            description: blog.description,
+            content: blog.content,
+            category: blog.category,
+            tags: blog.tags || [],
+            thumbnail: blog.thumbnail || "",
+        });
+
+        setShowModal(true);
+
+    };
 
     const handleTagToggle = (tagName) => {
         setFormData(prev => ({
@@ -223,6 +244,16 @@ export default function BlogsPage() {
                                     className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[#f8db98] transition"
                                     required
                                 />
+                                <label className="block text-sm font-semibold mt-2 mb-2 text-[#f8db98]">
+                                    Slug
+                                </label>
+                                <input
+                                    type="text"
+                                    value={formData.slug}
+                                    onChange={(e) => setFormData({ ...formData, slug: e.target.value })}
+                                    className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[#f8db98] transition"
+                                    required
+                                />
                             </div>
 
                             <div>
@@ -276,8 +307,8 @@ export default function BlogsPage() {
                                 </label>
                                 <div>
                                     {tags.length === 0 && (
-                                    <div className="text-gray-400 mb-2">No tags available. <Link className="text-[#0060d1] mb-2" href="/mc-admin/tags">Add tags here</Link></div>
-                                )}
+                                        <div className="text-gray-400 mb-2">No tags available. <Link className="text-[#0060d1] mb-2" href="/mc-admin/tags">Add tags here</Link></div>
+                                    )}
                                 </div>
                                 <div className="grid grid-cols-2 gap-3 p-4 bg-black/50 border border-white/20 rounded-lg">
                                     {tags.map((tag) => (
