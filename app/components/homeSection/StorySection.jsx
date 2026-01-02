@@ -1,8 +1,9 @@
-"use client";
 
 import Image from "next/image";
 import { MantisImage } from "../../common";
 import SectionTitle from "../SectionTitle";
+ import GsapReveal from "../GsapRevealImage";
+
 const storyContent = [
   {
     title: "High-Energy Nights at",
@@ -64,12 +65,13 @@ export default function MantisScrollSection() {
         {/* LEFT: STICKY IMAGE */}
         <div className="lg:col-span-5">
           <div className="sticky top-24">
-            <Image
-              src={MantisImage}
-              alt="Mantis Dubai"
-              className="w-full rounded-2xl shadow-2xl object-cover"
-              priority
-            />
+            <GsapReveal
+                          src={MantisImage}
+                          alt="Mantis Dubai"
+                          animation="fade-left"
+                          className="w-full rounded-2xl shadow-2xl object-cover"
+                        />
+           
           </div>
         </div>
 

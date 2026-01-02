@@ -13,6 +13,7 @@ import {
 } from "../../common";
 
 import SectionTitle from "../SectionTitle";
+import GsapRevealImage from "../GsapRevealImage";
 // import GlassIcon1 from "./../../assets/images/svg/aaaa.svg";
 // import GlassIcon2 from "./../../assets/images/svg/bbbb.svg";
 // import GlassIcon3 from "./../../assets/images/svg/cccc.svg";
@@ -137,6 +138,12 @@ export default function HorizontalScroll() {
                       fill
                       className="object-cover object-[center_30%]"
                     />
+                    {/* <GsapRevealImage
+                                  src={img}
+                                  alt={`Gallery Image ${index + 1}`}
+                                  fill
+                                  className="object-cover object-[center_30%]"
+                                /> */}
                   </div>
                 </div>
                 <div className="mt-3 text-center">

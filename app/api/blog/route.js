@@ -6,12 +6,24 @@ export async function POST(request) {
   try {
     await connectToDatabase();
     const body = await request.json();
-    const { _id, title, slug, description, content, category, tags, thumbnail } = body;
+    const {
+      _id,
+      title,
+      slug,
+      description,
+      content,
+      category,
+      tags,
+      thumbnail,
+    } = body;
 
     // Validate required fields
     if (!title || !slug || !description || !content || !category) {
       return NextResponse.json(
-        { message: "Title, slug, description, content, and category are required." },
+        {
+          message:
+            "Title, slug, description, content, and category are required.",
+        },
         { status: 400 }
       );
     }
@@ -72,7 +84,6 @@ export async function POST(request) {
   }
 }
 
-
 export async function DELETE(request) {
   const { searchParams } = new URL(request.url);
   const blogId = searchParams.get("id");
@@ -105,11 +116,22 @@ export async function DELETE(request) {
   }
 }
 
-export async function GET() {
+export async function GET(request) {
   try {
     await connectToDatabase();
-    const blogs = await Blogs.find().sort({ createdAt: -1 });
 
+    const { searchParams } = new URL(request.url);
+    const slug = searchParams.get("slug");
+
+    if (slug) {
+      const blog = await Blogs.findOne({ slug });
+      if (!blog) {
+        return NextResponse.json({ message: "Blog not found." }, { status: 404 });
+      }
+      return NextResponse.json({ blog }, { status: 200 });
+    }
+
+    const blogs = await Blogs.find().sort({ createdAt: -1 });
     return NextResponse.json({ blogs }, { status: 200 });
   } catch (error) {
     console.error("Error fetching blogs:", error);

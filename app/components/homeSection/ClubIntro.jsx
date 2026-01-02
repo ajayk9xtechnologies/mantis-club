@@ -1,62 +1,12 @@
-"use client";
-import { useEffect, useRef } from "react";
-import React from "react";
-import { MantisImageTwevele, MantisImageTen, MantisImageEleven } from "../../common";
-import Image from "next/image";
+import {
+  MantisImageTwevele,
+  MantisImageTen,
+  MantisImageEleven,
+} from "../../common";
+ import GsapReveal from "../GsapRevealImage";
 const ClubIntro = () => {
-  const sectionRef = useRef(null);
-  const image1Ref = useRef(null);
-  const image2Ref = useRef(null);
-  const image3Ref = useRef(null);
-
-  useEffect(() => {
-    const observerOptions = {
-      threshold: 0.2,
-      rootMargin: "0px 0px -100px 0px",
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("animate-in");
-        }
-      });
-    }, observerOptions);
-
-    [image1Ref, image2Ref, image3Ref].forEach((ref) => {
-      if (ref.current) observer.observe(ref.current);
-    });
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full bg-black py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-20"
-    >
-      <style jsx>{`
-        .fade-up {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-left {
-          opacity: 0;
-          transform: translateX(-50px);
-          transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .fade-right {
-          opacity: 0;
-          transform: translateX(50px);
-          transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-        .animate-in {
-          opacity: 1;
-          transform: translate(0, 0);
-        }
-      `}</style>
-
+    <section className="relative w-full bg-black py-16 md:py-24 lg:py-32 px-6 md:px-12 lg:px-20">
       <div className="max-w-7xl mx-auto">
         {/* Main Heading */}
         <div className="mb-10 md:mb-20 text-center lg:text-left">
@@ -66,7 +16,6 @@ const ClubIntro = () => {
             </span>{" "}
             DIFC - Mantis Dubai
           </h1>
-
         </div>
 
         {/* First Block - Text Left, Image Right */}
@@ -88,32 +37,28 @@ const ClubIntro = () => {
               conversation.
             </p>
           </div>
-          <div
-            ref={image1Ref}
-            className="hidden lg:block  fade-up relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
-          >
-            <Image
+          <div className="hidden lg:block  fade-up relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+            <GsapReveal
               src={MantisImageTwevele}
-              alt="Mantis Dubai Club Interior"
-              className="w-full h-full object-cover"
+              alt="Mantis Dubai Dance Floor"
+              animation="fade-left"
+              className="hidden lg:block h-[600px] rounded-2xl overflow-hidden shadow-2xl"
             />
+            
           </div>
         </div>
 
         {/* Second Block - Image Left, Text Right */}
         <div className="hidden lg:block grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-20 md:mb-28 items-center">
-          <div
-            ref={image2Ref}
-            className="fade-left relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
-          >
-            <Image
+          <div className="fade-left relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+            <GsapReveal
               src={MantisImageTen}
               alt="Mantis Dubai Dance Floor"
-              className="w-full h-full object-cover"
+              animation="fade-left"
+              className="hidden lg:block h-[600px] rounded-2xl overflow-hidden shadow-2xl"
             />
           </div>
           <div className="space-y-6 mt-5">
-
             <p className="text-gray-300 paragraph_three leading-relaxed text-center ">
               Whether you are just getting off work and grabbing a drink or
               working up, Mantis is the place where music-orientated nights,
@@ -122,8 +67,6 @@ const ClubIntro = () => {
             </p>
           </div>
         </div>
-
-
 
         {/* Third Block - Text Left, Image Right */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -146,15 +89,14 @@ const ClubIntro = () => {
               tailored DJ experience, each visit builds its own momentum.
             </p>
           </div>
-          <div
-            ref={image3Ref}
-            className="hidden lg:block fade-right relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl"
-          >
-            <Image
+          <div className="hidden lg:block fade-right relative h-[400px] md:h-[500px] lg:h-[600px] rounded-2xl overflow-hidden shadow-2xl">
+            <GsapReveal
               src={MantisImageEleven}
               alt="Mantis Dubai Atmosphere"
+              animation="fade-left"
               className="w-full h-full object-cover"
             />
+           
           </div>
         </div>
       </div>
@@ -162,4 +104,4 @@ const ClubIntro = () => {
   );
 };
 
-export default React.memo(ClubIntro);
+export default ClubIntro;

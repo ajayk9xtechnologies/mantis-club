@@ -19,6 +19,7 @@ const HeroVideo = () => {
   const curtainLeftRef = useRef(null);
   const curtainRightRef = useRef(null);
   const [videoLoaded, setVideoLoaded] = useState(false);
+  const [shouldPlayVideo, setShouldPlayVideo] = useState(true);
   const pathname = usePathname();
 
   const videoId = "48_q9A9cH1s";
@@ -26,6 +27,22 @@ const HeroVideo = () => {
   useEffect(() => {
     const t = setTimeout(() => setVideoLoaded(true), 500);
     return () => clearTimeout(t);
+  }, []);
+
+  // Intersection Observer for video playback control
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShouldPlayVideo(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
+    );
+
+    if (heroRef.current) {
+      observer.observe(heroRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
   const toYoutube = () => {
     return window.open("https://www.youtube.com/@mantisdubai6438", "_blank");
@@ -128,14 +145,14 @@ const HeroVideo = () => {
       <section
         id="mantis"
         ref={heroRef}
-        className="relative h-screen w-full overflow-hidden bg-black"
+        className="relative h-[100dvh] w-full overflow-hidden bg-black"
       >
         <div ref={videoWrapperRef} className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0">
             {!videoLoaded && (
               <Image
                 src={MantisImage}
-                alt=""
+                alt="Mantis Dubai Nightclub"
                 fill
                 sizes="100vw"
                 className="object-cover"
@@ -144,23 +161,25 @@ const HeroVideo = () => {
               />
             )}
             {videoLoaded && (
-              <iframe
-                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                style={{
-                  width: "100vw",
-                  height: "100vh",
-                  minWidth: "177.77vh",
-                  minHeight: "56.25vw",
+              <video
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+                ref={(el) => {
+                  if (el) {
+                    if (shouldPlayVideo) el.play().catch(() => { });
+                    else el.pause();
+                  }
                 }}
-                src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&playsinline=1&loop=1&playlist=${videoId}`}
-                allow="autoplay"
-                frameBorder="0"
-                title="Background Video"
-              />
+              >
+                <source src="/videos/club.mp4" type="video/mp4" />
+              </video>
             )}
           </div>
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/60 pointer-events-none" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/80 pointer-events-none" />
         </div>
 
         <div
@@ -224,7 +243,7 @@ const HeroVideo = () => {
                   {!videoLoaded && (
                     <Image
                       src={MantisImage}
-                      alt=""
+                      alt="Mantis Dubai Nightclub"
                       fill
                       sizes="100vw"
                       className="object-cover"
@@ -232,13 +251,21 @@ const HeroVideo = () => {
                     />
                   )}
                   {videoLoaded && (
-                    <iframe
-                      className="absolute top-1/2 left-1/2 w-[200%] h-[200%] -translate-x-1/2 -translate-y-1/2 pointer-events-none"
-                      src={`https://www.youtube.com/embed/${videoId}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=${videoId}`}
-                      allow="autoplay"
-                      frameBorder="0"
-                      title="Hero Video Fill"
-                    />
+                    <video
+                      className="absolute top-1/2 left-1/2 w-[110%] h-[110%] -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      ref={(el) => {
+                        if (el) {
+                          if (shouldPlayVideo) el.play().catch(() => { });
+                          else el.pause();
+                        }
+                      }}
+                    >
+                      <source src="/videos/club.mp4" type="video/mp4" />
+                    </video>
                   )}
                 </div>
               </foreignObject>
@@ -296,6 +323,37 @@ const HeroVideo = () => {
               ))}
             </g>
           </svg>
+        </div>
+
+        {/* Book Now CTA Button */}
+        <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-[1000] pointer-events-auto">
+          <a
+            href="#contact"
+            className="group relative inline-flex items-center gap-4 px-10 py-5 bg-[#f8db98] text-black font-extrabold text-xl rounded-full overflow-hidden border-2 border-[#f8db98] cursor-pointer"
+          >
+            <span className="relative z-10 tracking-widest">BOOK NOW</span>
+            <div className="relative z-10 w-6 h-6 flex items-center justify-center bg-black/10 rounded-full transition-transform duration-500 group-hover:rotate-45">
+              <svg
+                className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={3}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+
+            {/* Animated Shine Effect */}
+            <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/40 to-transparent -translate-x-full group-hover:animate-shine" />
+
+            {/* Background Hover Transition */}
+            <div className="absolute inset-0 bg-white/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+          </a>
         </div>
 
         <div

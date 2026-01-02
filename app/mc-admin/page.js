@@ -61,7 +61,6 @@ export default function AdminPage() {
     return (
         <div className="flex min-h-screen bg-black text-white ">
             <AdminSidebar />
-
             <main className="flex-1 p-8">
                 <div className="max-w-7xl mx-auto">
                     <h1 className="text-color-one mb-8">Dashboard</h1>

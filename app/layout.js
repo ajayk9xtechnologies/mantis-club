@@ -2,7 +2,9 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/nav/Footer";
 import Header from "./components/nav/Header";
- 
+import WhatsAppButton from "./components/WhatsAppButton";
+import LenisProvider from "./components/Lenis";
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -71,11 +73,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-       
-          <Header />
-          {children}
-          <Footer />
-        
+<LenisProvider>
+        <Header />
+        {children}
+        <Footer />
+        <WhatsAppButton />
+
+</LenisProvider>
+
       </body>
     </html>
   );

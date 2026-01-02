@@ -4,37 +4,38 @@ import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
 import { getBaseUrl } from "../../lib/getBaseUrl";
 import { MantisImage } from "../../common";
-
 export default function BlogDetailPage() {
     const params = useParams();
     const router = useRouter();
+    const { slug } = params;
     const [blog, setBlog] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchBlog = async () => {
             try {
-                const response = await fetch(`${getBaseUrl()}/blog`);
-                const data = await response.json();
-                const foundBlog = data.blogs?.find(b => b._id === params.id);
+                const res = await fetch(`${getBaseUrl()}/blog?slug=${slug}`, {
+                    cache: 'no-store'
+                });
+                const data = await res.json();
 
-                if (foundBlog) {
-                    setBlog(foundBlog);
+                if (data.blog) {
+                    setBlog(data.blog);
                 } else {
-                    router.push('/blogs');
+                    router.push("/blogs");
                 }
             } catch (error) {
                 console.error("Error fetching blog:", error);
-                router.push('/blogs');
+                router.push("/blogs");
             } finally {
                 setLoading(false);
             }
         };
 
-        if (params.id) {
+        if (params.slug) {
             fetchBlog();
         }
-    }, [params.id, router]);
+    }, [params.slug, router]);
 
     if (loading) {
         return (
@@ -55,7 +56,7 @@ export default function BlogDetailPage() {
             <div className="max-w-4xl mx-auto">
                 {/* Back Button */}
                 <button
-                    onClick={() => router.push('/blogs')}
+                    onClick={() => router.push("/blogs")}
                     className="text-[#f8db98] hover:underline mb-8 flex items-center gap-2"
                 >
                     ← Back to Blogs
@@ -74,10 +75,10 @@ export default function BlogDetailPage() {
                 {/* Blog Meta */}
                 <div className="mb-6">
                     <p className="text-sm text-[#f8db98] mb-2">
-                        {new Date(blog.createdAt).toLocaleDateString('en-US', {
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric'
+                        {new Date(blog.createdAt).toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
                         })}
                     </p>
                     <span className="px-3 py-1 bg-[#f8db98]/20 text-[#f8db98] text-sm rounded">

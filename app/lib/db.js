@@ -4,8 +4,6 @@ let isConnected = false;
 
 const connectToDatabase = async () => {
   if (isConnected) {
-    // Already connected — skip re-connecting
-    // console.log("✅ MongoDB already connected");
     return;
   }
 
@@ -19,7 +17,6 @@ const connectToDatabase = async () => {
       bufferCommands: false,
       maxPoolSize: 10,
     });
-
     isConnected = true;
     console.log("✅ MongoDB Connected Successfully");
   } catch (error) {

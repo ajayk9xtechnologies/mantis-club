@@ -43,7 +43,6 @@ export async function POST(request) {
 export async function DELETE(request) {
     const { searchParams } = new URL(request.url);
     const categoryId = searchParams.get('id');
-
     if (!categoryId) {
         return NextResponse.json(
             { message: "Category ID is required." },
@@ -74,7 +73,7 @@ export async function DELETE(request) {
         );
     }
 }
- 
+
 export async function GET() {
     try {
         await connectToDatabase();
