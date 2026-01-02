@@ -1,66 +1,39 @@
-"use client";
-import { useEffect, useState } from "react";
-import { useParams, useRouter } from "next/navigation";
 import Image from "next/image";
-import { getBaseUrl } from "../../lib/getBaseUrl";
 import { MantisImage } from "../../common";
-export default function BlogDetailPage() {
-    const params = useParams();
-    const router = useRouter();
-    const { slug } = params;
-    const [blog, setBlog] = useState(null);
-    const [loading, setLoading] = useState(true);
+import SafeLink from "../../components/SafeLink";
+import connectToDatabase from "../../lib/db";
+import Blogs from "../../../models/blogs";
+import { notFound } from "next/navigation";
 
-    useEffect(() => {
-        const fetchBlog = async () => {
-            try {
-                const res = await fetch(`${getBaseUrl()}/blog?slug=${slug}`, {
-                    cache: 'no-store'
-                });
-                const data = await res.json();
-
-                if (data.blog) {
-                    setBlog(data.blog);
-                } else {
-                    router.push("/blogs");
-                }
-            } catch (error) {
-                console.error("Error fetching blog:", error);
-                router.push("/blogs");
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        if (params.slug) {
-            fetchBlog();
-        }
-    }, [params.slug, router]);
-
-    if (loading) {
-        return (
-            <section className="min-h-screen bg-black text-white pt-32 pb-20 px-6 md:px-12">
-                <div className="max-w-4xl mx-auto text-center text-gray-400">
-                    Loading blog...
-                </div>
-            </section>
-        );
+async function getBlog(slug) {
+    try {
+        await connectToDatabase();
+        const blog = await Blogs.findOne({ slug }).lean();
+        return blog ? JSON.parse(JSON.stringify(blog)) : null;
+    } catch (error) {
+        console.error("Error fetching blog from DB:", error);
+        return null;
     }
+}
+
+export default async function BlogDetailPage({ params }) {
+    const { slug } = params;
+    const blog = await getBlog(slug);
 
     if (!blog) {
-        return null;
+        notFound();
     }
 
     return (
         <section className="min-h-screen bg-black text-white pt-32 pb-20 px-6 md:px-12">
             <div className="max-w-4xl mx-auto">
                 {/* Back Button */}
-                <button
-                    onClick={() => router.push("/blogs")}
-                    className="text-[#f8db98] hover:underline mb-8 flex items-center gap-2"
+                <SafeLink
+                    href="/blogs"
+                    className="text-[#f8db98] hover:underline mb-8 flex items-center gap-2 w-fit"
                 >
                     ← Back to Blogs
-                </button>
+                </SafeLink>
 
                 {/* Blog Image */}
                 <div className="relative h-96 w-full rounded-2xl overflow-hidden mb-8">

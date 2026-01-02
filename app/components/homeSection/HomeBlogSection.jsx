@@ -1,23 +1,19 @@
- import SectionTitle from "../SectionTitle";
-
-import { getBaseUrl } from "../../lib/getBaseUrl";
+import SectionTitle from "../SectionTitle";
 import { MantisImage } from "../../common";
 import GsapReveal from "../GsapRevealImage";
 import SafeLink from "../SafeLink";
 import Breadcrumbs from "../Breadcrumbs";
+import connectToDatabase from "../../lib/db";
+import Blogs from "../../../models/blogs";
 
 async function getBlogs() {
     try {
-        const response = await fetch(`${getBaseUrl()}/blog`, {
-            next: { revalidate: 60 } // Revalidate every 60 seconds
-        });
-        if (!response.ok) {
-            return [];
-        }
-        const data = await response.json();
-        return data.blogs || [];
+        await connectToDatabase();
+        // Plain objects are required for Server Components if passing to Client Components or for general stability
+        const blogs = await Blogs.find().sort({ createdAt: -1 }).lean();
+        return JSON.parse(JSON.stringify(blogs));
     } catch (error) {
-        console.error("Error fetching blogs:", error);
+        console.error("Error fetching blogs from DB:", error);
         return [];
     }
 }
@@ -30,7 +26,7 @@ export default async function HomeBlogSection({ isBlogPage = false }) {
 
     return (
         <section className={`bg-black text-white px-6 md:px-12 ${isBlogPage ? 'pt-32 pb-10 min-h-screen' : 'py-10'}`}>
-            
+
             {isBlogPage && <Breadcrumbs />}
             <div className="max-w-7xl mx-auto">
                 <div className="mb-6 text-center">
