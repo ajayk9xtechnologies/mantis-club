@@ -1,38 +1,71 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🍸 Mantis Dubai - Premium Nightclub & Lounge
 
-## Getting Started
+Mantis Dubai is a high-end, cinematic web experience for one of Dubai's most exclusive nightlife destinations located in DIFC. Built with a focus on immersive visual storytelling, smooth performance, and robust content management.
 
-First, run the development server:
+![Mantis Dubai](https://www.mantisdubai.com/og-mantis.jpg)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🚀 Tech Stack
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- **Framework**: [Next.js 15](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Animations**: [GSAP](https://greensock.com/gsap/) (GreenSock Animation Platform) + [ScrollTrigger](https://greensock.com/scrolltrigger/)
+- **Smooth Scrolling**: [Lenis](https://github.com/darkroomengineering/lenis)
+- **Database**: [MongoDB](https://www.mongodb.com/) with [Mongoose](https://mongoosejs.com/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Mapping**: [Leaflet.js](https://leafletjs.com/) (react-leaflet)
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## ✨ Key Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Cinematic Experience**: Immersive video backgrounds with custom GSAP-driven entrance animations and "curtain" reveals.
+- **Scroll-Driven Storytelling**: Interactive sections using ScrollTrigger for pinning, parallaxes, and layered reveals.
+- **Dynamic CMS**: A custom blog engine powered by MongoDB, featuring dynamic routing and SEO-optimized pages.
+- **Admin Portal**: A secure dashboard (`/mc-admin`) for managing blogs, categories, and tags.
+- **Performance Optimized**: Fine-tuned navigation cleanup handling GSAP ScrollTrigger instances to prevent memory leaks and DOM errors.
+- **SEO & Social Media**: Comprehensive metadata, Open Graph integration, and pixel-perfect favicon sets.
 
-## Learn More
+## 🛠️ Getting Started
 
-To learn more about Next.js, take a look at the following resources:
+### Prerequisites
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Node.js 18+ 
+- MongoDB instance (Atlas or local)
+- Environment variables configured in `.env.local`:
+  ```env
+  MONGODB_URI=your_mongodb_connection_string
+  ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Installation
 
-## Deploy on Vercel
+1.  **Clone the repository**:
+    ```bash
+    git clone https://github.com/your-repo/mantis-club.git
+    cd mantis-club
+    ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+2.  **Install dependencies**:
+    ```bash
+    npm install
+    ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-w$C5k88uM#X8U3y
-3e984d06f1b6464782031c9808223eb7
+3.  **Run the development server**:
+    ```bash
+    npm run dev
+    ```
+
+4.  **Open the app**:
+    Navigate to [http://localhost:3000](http://localhost:3000)
+
+## 📁 Project Structure
+
+- `app/`: Next.js App Router directory.
+  - `api/`: Backend routes (Blog CRUD, Stats).
+  - `blogs/`: Dynamic blog listing and detail pages.
+  - `mc-admin/`: Admin dashboard and management screens.
+  - `components/`: Modular UI, Section, and Navigation components.
+- `models/`: Mongoose schemas (Blog, Category, Tag).
+- `lib/`: Utility functions (DB connection, API helpers).
+- `public/`: Static assets (Videos, Fonts, Images).
+
+## 📄 License
+
+Part of the Mantis Dubai Digital Experience. All rights reserved.
