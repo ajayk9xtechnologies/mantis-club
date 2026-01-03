@@ -48,16 +48,6 @@ const HeroVideo = () => {
     return window.open("https://www.youtube.com/@mantisdubai6438", "_blank");
   };
 
-  // Kill ScrollTriggers on pathname change (BEFORE navigation completes)
-  useEffect(() => {
-    return () => {
-      // This runs when pathname changes, BEFORE component unmounts
-      ScrollTrigger.getAll().forEach((st) => {
-        st.kill(true);
-      });
-      gsap.killTweensOf("*");
-    };
-  }, [pathname]);
 
   // GSAP animations
   useEffect(() => {
@@ -179,7 +169,9 @@ const HeroVideo = () => {
             )}
           </div>
 
-          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/40 to-black/80 pointer-events-none" />
+          {/* Premium Dark Overlays to mask low-res artifacts */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/95 via-black/40 to-black/90 pointer-events-none z-10" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.7)_100%)] pointer-events-none z-10" />
         </div>
 
         <div

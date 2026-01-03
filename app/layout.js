@@ -4,6 +4,7 @@ import Footer from "./components/nav/Footer";
 import Header from "./components/nav/Header";
 import WhatsAppButton from "./components/WhatsAppButton";
 import LenisProvider from "./components/Lenis";
+import NavigationCleanup from "./components/NavigationCleanup";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -73,13 +74,14 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-<LenisProvider>
-        <Header />
-        {children}
-        <Footer />
-        <WhatsAppButton />
+        <LenisProvider>
+          <Header />
+          <NavigationCleanup />
+          {children}
+          <Footer />
+          <WhatsAppButton />
 
-</LenisProvider>
+        </LenisProvider>
 
       </body>
     </html>
