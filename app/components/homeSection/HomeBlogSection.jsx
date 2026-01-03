@@ -5,11 +5,11 @@ import SafeLink from "../SafeLink";
 import Breadcrumbs from "../Breadcrumbs";
 import connectToDatabase from "../../lib/db";
 import Blogs from "../../../models/blogs";
+import Image from "next/image";
 
 async function getBlogs() {
     try {
         await connectToDatabase();
-        // Plain objects are required for Server Components if passing to Client Components or for general stability
         const blogs = await Blogs.find().sort({ createdAt: -1 }).lean();
         return JSON.parse(JSON.stringify(blogs));
     } catch (error) {
@@ -43,11 +43,10 @@ export default async function HomeBlogSection({ isBlogPage = false }) {
                             className="bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 transition duration-300 cursor-pointer group"
                         >
                             <div className="relative h-48 bg-gray-800 overflow-hidden">
-
-                                <GsapReveal
+                                <Image
                                     src={blog.thumbnail || MantisImage}
                                     alt={blog.title}
-                                    animation="fade-in"
+                                    fill
                                     className="object-cover group-hover:scale-110 transition duration-300"
                                 />
                             </div>

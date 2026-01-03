@@ -6,7 +6,7 @@ export async function GET(request, { params }) {
   try {
     await connectToDatabase();
 
-    const { slug } = params;
+    const { slug } = await params;
     console.log("Slug:", slug);
 
     const blog = await Blogs.findOne({ slug });
