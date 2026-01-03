@@ -321,10 +321,10 @@ const HeroVideo = () => {
         <div className="absolute bottom-24 left-1/2 -translate-x-1/2 z-[1000] pointer-events-auto">
           <a
             href="#contact"
-            className="group relative inline-flex items-center gap-4 px-10 py-5 bg-[#f8db98] text-black font-extrabold text-xl rounded-full overflow-hidden border-2 border-[#f8db98] cursor-pointer"
+            className="group relative inline-flex items-center gap-4 px-3 lg:px-10 py-5 bg-[#f8db98] text-black font-extrabold text-lg lg:text-xl rounded-full overflow-hidden border-2 border-[#f8db98] cursor-pointer"
           >
             <span className="relative z-10 tracking-widest">BOOK NOW</span>
-            <div className="relative z-10 w-6 h-6 flex items-center justify-center bg-black/10 rounded-full transition-transform duration-500 group-hover:rotate-45">
+            <div className="relative z-10 h-6 flex items-center justify-center bg-black/10 rounded-full transition-transform duration-500 group-hover:rotate-45">
               <svg
                 className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-0.5"
                 fill="none"
