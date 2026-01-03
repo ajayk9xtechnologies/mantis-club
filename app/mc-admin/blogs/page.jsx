@@ -115,7 +115,7 @@ export default function BlogsPage() {
         setEditingBlog(blog);
         setFormData({
             title: blog.title,
-            slug: blog.title.replace(/\s+/g, '-').toLowerCase(),
+            slug: blog.slug || blog.title.replace(/\s+/g, '-').toLowerCase(),
             description: blog.description,
             content: blog.content,
             category: blog.category,
@@ -240,7 +240,16 @@ export default function BlogsPage() {
                                 <input
                                     type="text"
                                     value={formData.title}
-                                    onChange={(e) => setFormData({ ...formData, title: e.target.value })}
+                                    onChange={(e) => {
+                                        const title = e.target.value;
+                                        const slug = title
+                                            .toLowerCase()
+                                            .replace(/[^a-z0-9\s-]/g, '') // Remove special characters
+                                            .trim()
+                                            .replace(/\s+/g, '-') // Replace spaces with hyphens
+                                            .replace(/-+/g, '-'); // Remove consecutive hyphens
+                                        setFormData({ ...formData, title, slug });
+                                    }}
                                     className="w-full px-4 py-3 bg-black/50 border border-white/20 rounded-lg text-white focus:outline-none focus:border-[#f8db98] transition"
                                     required
                                 />
